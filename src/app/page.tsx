@@ -39,9 +39,7 @@ type Event = {
 };
 
 export default function Home() {
-  const [trackIndex, setTrackIndex] = useState<Number>(0);
-  const [isPlaying, setIsPlaying] = useState<Boolean>(false);
-  const audioRef = useRef(null);
+
 
   const router = useRouter();
   const [artistName, setArtistName] = useState<String>("");
@@ -56,10 +54,7 @@ export default function Home() {
   }
 
 
-  useEffect(()=> {
 
-
-  }, [])
 
   return (
       
@@ -93,19 +88,7 @@ export default function Home() {
               <video autoPlay loop muted playsInline controls={false} className="opacity-50 object-cover rounded-3xl border-1 border-amber-300" src="/coffee/matcha.mp4">
               </video>
               
-              <div className="p-5 rounded-3xl bg-amber-500 z-100 my-5 flex flex-row gap-2 ">
-                <div className="bg-amber-700 w-fit p-2 rounded-lg ">
-                  <Music className="text-white scale-120"></Music>
-                </div>
-                <div className="self-center">{songName} by {artistName} is playing...</div>
-                <div className="bg-amber-700 w-fit p-2 rounded-lg ">
-                  <Pause className="text-white scale-120"></Pause>
-                </div>
-                <div className="bg-amber-700 w-fit p-2 rounded-lg ">
-                  <SkipForward className="text-white scale-120"></SkipForward>
-                </div>
-
-              </div>
+              
 
               <div className="flex items-center gap-6">
                 <div className="flex-grow h-px bg-amber-400"></div>

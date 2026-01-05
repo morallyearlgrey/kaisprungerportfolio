@@ -3,6 +3,7 @@ import { createCallerFactory, createTRPCRouter } from "@/server/api/trpc";
 import { projectsRouter } from "@/server/api/routers/projects";
 import { experiencesRouter } from "@/server/api/routers/experiences";
 import { eventsRouter } from "@/server/api/routers/events";
+import { musicRouter } from "./routers/music";
 /**
  * This is the primary router for your server.
  *
@@ -12,6 +13,7 @@ export const appRouter = createTRPCRouter({
     projects: projectsRouter,
     experiences: experiencesRouter,
     events: eventsRouter,
+    music: musicRouter,
 
 });
 

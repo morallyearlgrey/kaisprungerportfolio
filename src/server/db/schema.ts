@@ -109,6 +109,18 @@ export const Events = pgTable("events", {
 //   createdAt: timestamp("created_at", { mode: "date" }).notNull().defaultNow(),
 // });
 
+// ==== Songs Tables ====
+
+export const Songs = pgTable("songs", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  songName: varchar("date", { length: 255 }).notNull(),
+  artistName: varchar("date", { length: 255 }).notNull(),
+  url: varchar("date", { length: 255 }).notNull(),
+  createdAt: timestamp("created_at", { mode: "date" }).notNull().defaultNow(),
+  updatedAt: timestamp("updated_at", { mode: "date" }).notNull().defaultNow(),
+
+});
+
 // ==== Projects Tables ====
 
 export const Projects = pgTable("projects", {
