@@ -1,69 +1,237 @@
+"use client";
+
 import Link from "next/link";
+import Image from "next/image";
 
-import { LatestPost } from "~/app/_components/post";
-import { auth } from "~/server/auth";
-import { api, HydrateClient } from "~/trpc/server";
+import { Button } from "@/components/ui/button";
 
-export default async function Home() {
-  const hello = await api.post.hello({ text: "from tRPC" });
-  const session = await auth();
+import { Navbar } from "../components/navbar";
 
-  if (session?.user) {
-    void api.post.getLatest.prefetch();
+import { RabbitIcon, Music, Pause, SkipForward } from "lucide-react";
+
+import { useRouter } from "next/navigation";
+
+import {useState, useEffect, useRef} from "react";
+
+import { trpc } from "@/trpc/client";
+
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+
+
+type Event = {
+  id: string;
+  headline: string;
+  date: string;
+  location: string | null;
+  description: string;
+  photoUrl: string;
+  caption: string | null;
+  createdAt: Date;
+  updatedAt: Date;
+};
+
+export default function Home() {
+  const [trackIndex, setTrackIndex] = useState<Number>(0);
+  const [isPlaying, setIsPlaying] = useState<Boolean>(false);
+  const audioRef = useRef(null);
+
+  const router = useRouter();
+  const [artistName, setArtistName] = useState<String>("");
+  const [songName, setSongName] = useState<String>("");
+
+  const { data: Events } = trpc.events.getAllEvents.useQuery();
+
+  const [currentEvent, setCurrentEvent] = useState<Event | null>(null);
+  
+  const handleEventSelect = (event: Event) => {
+    setCurrentEvent(event);
   }
 
+
+  useEffect(()=> {
+
+
+  }, [])
+
   return (
-    <HydrateClient>
-      <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
-        <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16">
-          <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
-            Create <span className="text-[hsl(280,100%,70%)]">T3</span> App
-          </h1>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
-            <Link
-              className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
-              href="https://create.t3.gg/en/usage/first-steps"
-              target="_blank"
-            >
-              <h3 className="text-2xl font-bold">First Steps →</h3>
-              <div className="text-lg">
-                Just the basics - Everything you need to know to set up your
-                database and authentication.
-              </div>
-            </Link>
-            <Link
-              className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
-              href="https://create.t3.gg/en/introduction"
-              target="_blank"
-            >
-              <h3 className="text-2xl font-bold">Documentation →</h3>
-              <div className="text-lg">
-                Learn more about Create T3 App, the libraries it uses, and how
-                to deploy it.
-              </div>
-            </Link>
+      
+      <div className="bg-black flex w-full flex-col max-w-screen ">
+        <div className="relative w-full h-[120vh]">
+          <div className="z-4 w-full h-fit inset-0 items-center px-5">
+            <Navbar />
           </div>
-          <div className="flex flex-col items-center gap-2">
-            <p className="text-2xl text-white">
-              {hello ? hello.greeting : "Loading tRPC query..."}
-            </p>
 
-            <div className="flex flex-col items-center justify-center gap-4">
-              <p className="text-center text-2xl text-white">
-                {session && <span>Logged in as {session.user?.name}</span>}
-              </p>
-              <Link
-                href={session ? "/api/auth/signout" : "/api/auth/signin"}
-                className="rounded-full bg-white/10 px-10 py-3 font-semibold no-underline transition hover:bg-white/20"
-              >
-                {session ? "Sign out" : "Sign in"}
-              </Link>
+          <div className="gap-10 grid px-10 max-w-full">
+
+            <div className="z-100 p-10 flex-col gap-y-2 flex">
+                <div className="text-[var(--beige)] font-[display-font] text-7xl">KAI SPRUNGER</div>
+                <div className="typewriter text-4xl font-[subheading-font] max-w-fit text-white">SOFTWARE ENGINEER</div>
+                <div className="text-white flex-wrap font-[body-font]">
+                  Sophomore majoring in Computer Science at the University of Central Florida.
+                </div>
+
+                 <Button 
+                  className="z-100 w-fit p-5 font-[subheading-font] bg-amber-400 hover:bg-amber-500 hover:scale-110 transition-all duration-200 cursor-pointer lg:translate-y-1/2" 
+                  onClick={() => router.push("/about")}
+                >
+                  <span>LEARN ABOUT MY <i><s>CAFE</s></i> PORTFOLIO...</span>
+                  <RabbitIcon />
+                </Button>
+             
+
+              </div>
+
+            <div className="absolute  left-1/2 -translate-x-1/2  w-full h-auto max-w-full pl-10 pr-10">
+              <video autoPlay loop muted playsInline controls={false} className="opacity-50 object-cover rounded-3xl border-1 border-amber-300" src="/coffee/matcha.mp4">
+              </video>
+              
+              <div className="p-5 rounded-3xl bg-amber-500 z-100 my-5 flex flex-row gap-2 ">
+                <div className="bg-amber-700 w-fit p-2 rounded-lg ">
+                  <Music className="text-white scale-120"></Music>
+                </div>
+                <div className="self-center">{songName} by {artistName} is playing...</div>
+                <div className="bg-amber-700 w-fit p-2 rounded-lg ">
+                  <Pause className="text-white scale-120"></Pause>
+                </div>
+                <div className="bg-amber-700 w-fit p-2 rounded-lg ">
+                  <SkipForward className="text-white scale-120"></SkipForward>
+                </div>
+
+              </div>
+
+              <div className="flex items-center gap-6">
+                <div className="flex-grow h-px bg-amber-400"></div>
+
+                <h2 className="text-white font-semibold tracking-wide">
+                  ABOUT ME
+                </h2>
+
+                <div className="flex-grow h-px bg-amber-400"></div>
+              </div>
+              
+              <div className="flex flex-row gap-5">
+                <div className="w-1/3 bg-amber-300">
+    {/* rotating coffee cup */}
+                </div>
+                <div className="flex flex-col text-white gap-3 w-full">
+                  <div className="bg-amber-300">5+ hackathon wins</div>
+                  <div className="bg-amber-300">Internships at NVIDIA and BNY</div>
+                  <div className="bg-amber-300">Hackathon organizer at Knight Hacks</div>
+                  <div className="bg-amber-300">Software Chair at IEEE</div>
+
+                </div>
+
+              </div>
+
+              <div className="">
+                <div className="text-blue-500 translate-y-70">killmyselfkillmyselfkillmyselfkillmyselfkillmyselfkillmyselfkillmyself</div>
+                  <Image
+                    className="object-fill"
+                    src="/coffee/pouring.png"
+                    alt="pouring coffee"
+                    width={3000}
+                    height={3000}
+                  />
+                <div className="text-blue-500 -translate-y-70 text-right">killmyselfkillmyselfkillmyselfkillmyselfkillmyselfkillmyselfkillmyself</div>
+
+              </div>
+
+               <div className="flex items-center gap-6">
+                <div className="flex-grow h-px bg-amber-400"></div>
+
+                <h2 className="font-semibold tracking-wide text-black">
+                  RECENT EVENTS
+                </h2>
+
+                <div className="flex-grow h-px bg-amber-400"></div>
+              </div>
+
+              <div className="flex flex-row h-full">
+                <div className="overflow-scroll w-1/3 bg-amber-400 flex flex-col">
+                {Events?.map((item, index) => (
+                  
+                <Card className="w-full max-w-sm" onClick={()=> handleEventSelect(item)}>
+                  <CardHeader>
+                  {item.headline}
+                  {item.location}
+                  {item.date}
+                  </CardHeader>
+                  <CardContent>
+                    <Image
+                      className="object-cover"
+                      src={item.photoUrl}
+                      alt="pouring coffee"
+                      width={2000}
+                      height={2000}
+                    />
+                    {item.caption}
+                    {item.description}
+                  </CardContent>
+                </Card>
+              )
+
+                )}
+                </div>
+                <div className="w-full bg-amber-400">
+                 <Image
+                    className="object-cover"
+                    src={currentEvent?.photoUrl ? currentEvent.photoUrl : "/coffee/lofi-girl.jpeg" }
+                    alt="pouring coffee"
+                    width={2000}
+                    height={2000}
+                  />
+
+                  <div className="">{currentEvent?.headline}</div>
+                  <div className="">{currentEvent?.location}</div>
+                  <div className="">{currentEvent?.date}</div>
+                  <div className="">{currentEvent?.description}</div>
+
+                </div>
+
+              </div>
+
+
             </div>
+
+
+            
+
+              
+           
+            <div className="relative flex -translate-y-1/8">
+              {/* <Image
+                className="object-fill"
+                src="/coffee/pouring.png"
+                alt="pouring coffee"
+                width={3000}
+                height={3000}
+              /> */}
+            </div>
+
+            <div className="flex flex-col -translate-y-180 pl-10 items-end flex-wrap w-full">
+              <div className="text-blue-600">killmyselfkillmyselfkillmyselfkillmyselfkillmyselfkillmyselfkillmyself</div>
+            </div>
+
+
+          </div>
+          
+          <div className="flex flex-row w-full lg:pr-36 lg:pl-36 gap-x-10">
+              <div className="w-1/3">
+                
+              </div>
+
           </div>
 
-          {session?.user && <LatestPost />}
+          
         </div>
-      </main>
-    </HydrateClient>
+      </div>
   );
 }
