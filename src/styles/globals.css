@@ -4,6 +4,14 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
+  --background: oklch(1 0 0);
+
+
+  --one: #748170;
+  --two: #a0ab89;
+  --three: #f6e5e7;
+  --four: #eec0bf;
+  --five: #e69b97;
 
   --dark-blue: #0c1519;
   --blue: #1E2B37;
@@ -11,6 +19,8 @@
   --brown: #956643;
   --light-brown: #BD916F;
   --beige: #E4CDB0;
+
+
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.147 0.004 49.25);
@@ -44,6 +54,41 @@
   --sidebar-border: oklch(0.923 0.003 48.717);
   --sidebar-ring: oklch(0.709 0.01 56.259);
 
+}
+
+.animated-background {
+    background-size: 190%;
+
+    -webkit-animation: animation 6s ease infinite;
+    -moz-animation: animation 6s ease infinite;
+    animation: animation 6s ease infinite;
+}
+
+@keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+    animation: spin-slow 3s linear infinite;
+}
+
+ @keyframes grow-shrink {
+            0%, 100% {
+              transform: scale(1.5);
+            }
+            50% {
+              transform: scale(3);
+            }
+          }
+          
+          .animate-grow-shrink {
+            animation: grow-shrink 5s ease-in-out infinite;
+          }
+          
+          .animate-grow-shrink-delayed {
+            animation: grow-shrink 5s ease-in-out infinite;
+            animation-delay: 4s;
 }
 
 @theme {

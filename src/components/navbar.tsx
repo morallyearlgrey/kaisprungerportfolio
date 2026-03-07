@@ -13,8 +13,8 @@ const routes: { title: string; href: string; image: string}[] = [
   { title: "Experiences", href: "/experiences", image: "/iconography/navbarabout.png"},
   { title: "Projects", href: "/projects", image: "/iconography/navbarevents.png"},
   { title: "Skills", href: "/skills", image: "/iconography/navbarprojects.png"},
-  { title: "Features", href: "/skills", image: "/iconography/navbarprojects.png"},
-  { title: "Recipes", href: "/recipes", image: "/iconography/navbarsponsorships.png"},
+  // { title: "Features", href: "/skills", image: "/iconography/navbarprojects.png"},
+  // { title: "Recipes", href: "/recipes", image: "/iconography/navbarsponsorships.png"},
 ];
 
 const Navbar: React.FC = () => {
@@ -25,23 +25,59 @@ const Navbar: React.FC = () => {
 	};
 
 	return (
-		<div className="relative flex items-center justify-between h-40 w-full">
+		<div className="relative flex items-center justify-between h-30 w-full">
 			<div className="flex w-full m-6">
-				<div className="flex justify-start items-center w-1/3">
-					<Link href={"/"} className="text-white font-[body-font] flex-row flex align-middle justify-center items-center gap-x-5 text-xl  hover:text-[var(--ieee-dark-yellow)] transition">
-						<RabbitIcon className="scale-110 text-white"></RabbitIcon>
+				<div className="flex justify-start items-center w-1/3 hover:scale-110 duration-300 transition-all">
+					<Link href={"/"} className="text-white font-[body-font] flex-row flex align-middle justify-center items-center gap-x-5 text-xl">
+						 <Image
+                    className="object-fill w-[100] h-auto"
+                    src="/decor/kaisprungericon.png"
+                    alt="pouring coffee"
+                    width={2000}
+                    height={2000}
+                  />
                         
                         KAI SPRUNGER
 					</Link>
 				</div>
         
-        <div className="lg:flex hidden items-center justify-center gap-5 w-3/5 rounded-4xl bg-[var(--blue)] p-5 ">
+        <div className="lg:flex hidden items-center justify-center gap-5 w-3/5 rounded-4xl 
+        p-5 
+        rounded-full 
+        z-100
+        my-5 
+        flex 
+        flex-row 
+        justify-between
+        gap-2 
+        bg-white/10 
+        hover:bg-[#ecf8e0]/30
+        backdrop-blur-sm
+        border-1
+        border-white/85
+        backdrop-saturate-250
+        shadow-[0_8px_32px_0_rgba(0,0,0,0.12)]
+        hover:shadow-[0_8px_32px_0_rgba(0,0,0,0.18)]
+        duration-300 
+        ease-out
+        transition-all 
+        rounded-full
+        before:absolute
+        before:inset-0
+        before:rounded-full
+        before:p-[2px]
+        before:bg-[linear-gradient(to_right,white,transparent_20%,transparent_80%,white),linear-gradient(to_bottom,white,transparent_40%,transparent_60%,white)]
+        before:opacity-50
+        before:-z-10
+
+        
+        ">
         {routes.map((route, index) => (
             <Link
             key={index}
             href={route.href}
             className={
-                "font-[body-font] text-sm items-center inline-flex text-white hover:text-[var(--ieee-dark-yellow)] transition z-100 opacity-100"
+                "font-[subheading-font] text-base items-center inline-flex text-white hover:text-xl transition-all duration-300 z-100 opacity-100"
             }
             >
             {route.title.toUpperCase()}
@@ -53,9 +89,9 @@ const Navbar: React.FC = () => {
         </div>
 
         <div className="items-center w-1/3 justify-end gap-x-3 flex-row lg:flex hidden lg:display">
-            <Linkedin className="scale-110 text-white"></Linkedin>
-            <Github className="scale-110 text-white"></Github>
-            <Paperclip className="scale-110 text-white"></Paperclip>
+            <Linkedin className="scale-110 text-white hover:scale-140 duration-300 transition-all cursor-pointer"></Linkedin>
+            <Github className="scale-110 text-white hover:scale-140 duration-300 transition-all cursor-pointer"></Github>
+            <Paperclip className="scale-110 text-white hover:scale-140 duration-300 transition-all cursor-pointer"></Paperclip>
 
         </div>
         

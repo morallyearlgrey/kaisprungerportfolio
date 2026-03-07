@@ -1,7 +1,7 @@
 // import { TRPCError } from "@trpc/server";
 // import { z } from "zod";
 import { db } from "@/server/db/index";
-import { ExperiencePhotos, Experiences } from "@/server/db/schema";
+import { ExperiencePhotos, Experiences, ExperienceVideos } from "@/server/db/schema";
 // import { eq } from "drizzle-orm";
 import { 
   publicProcedure,
@@ -19,6 +19,11 @@ export const experiencesRouter = createTRPCRouter({
     getAllExperiencePhotos: publicProcedure.query(async () => {
         const experiencePhotos = await db.select().from(ExperiencePhotos);
         return experiencePhotos;
+    }),
+
+    getAllExperienceVideos: publicProcedure.query(async () => {
+        const experienceVideos = await db.select().from(ExperienceVideos);
+        return experienceVideos;
     }),
 
 });

@@ -35,112 +35,85 @@ if (typeof window !== "undefined") {
 	gsap.registerPlugin(ScrollTrigger);
 }
 
-interface Experience {
-    id: string;
-    name: string;
-    company: string;
-    dateRange: string;
-    location: string | null;
-    description: string | null;
-    responsibilities: string | null;
-}
+import {Reel} from "@/components/experience/reel";
 
-interface ExperienceWithPhoto extends Experience {
-    photoUrl: string;
-    caption: string;
-}
-
-function Scene() {
-  return (
-    <>
-      <ambientLight intensity={0.5} />
-      <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
-      <mesh>
-        <boxGeometry args={[1, 1, 1]} />
-        <meshStandardMaterial color="hotpink" />
-      </mesh>
-      <OrbitControls />
-    </>
-  );
-}
+import { WavyBackground } from "@/components/ui/wavy-background";
 
 
 export default function Experiences() {
-    const router = useRouter();
-
-    const { data: experiences } = trpc.experiences.getAllExperiences.useQuery();
-    const { data: experiencePhotos } = trpc.experiences.getAllExperiencePhotos.useQuery();
-
-    const [isFlipped, flip] = useState<Boolean>();
-
-	const carouselRef = useRef(null);
-
-    const experiencesWithPhotos = useMemo(() => {
-        if (!experiences || !experiencePhotos) return [];
-
-        return experiences
-            .map((exp) => {
-                const firstPhoto = experiencePhotos.find(
-                    (photo) => photo.experienceId === exp.id
-                );
-
-                if (!firstPhoto) return null;
-
-                return {
-                    ...exp,
-                    photoUrl: firstPhoto.photoUrl,
-                    caption: firstPhoto.caption,
-                } as ExperienceWithPhoto;
-            })
-            .filter((item): item is ExperienceWithPhoto => item !== null);
-    }, [experiences, experiencePhotos]);
-
-    useEffect(() => {
-        if (typeof window !== "undefined" && carouselRef.current) {
-			gsap.fromTo(
-				carouselRef.current,
-				{ opacity: 0, y: 100 },
-				{
-					opacity: 1,
-					y: 0,
-					duration: 1,
-					ease: "power3.out",
-					scrollTrigger: {
-						trigger: carouselRef.current,
-						start: "top 80%",
-					},
-				},
-			);
-		}
-    }, [experiencesWithPhotos]);
 
     return (
-        <div className="flex flex-col max-w-screen">
-            <div className="relative w-full h-[120vh]">
-                <div className="z-4 w-full h-fit inset-0 items-center px-5 bg-black">
-                    <Navbar />
-                </div>
+        <div className="relative  flex w-full flex-col max-w-screen overflow-x-hidden ">
+                   <WavyBackground colors={["#ffffff", "#ffffff", "#ffffff", "#ffffff", "#ffffff"]}
+                         waveWidth={10}
+                         blur={5}
+                         speed="fast"
+                         waveOpacity={0.9}
+                         backgroundFill="#eeb7b7"
+                         className="text-center px-4 fixed" 
+                         containerClassName="fixed inset-0 w-full h-screen"> 
+                   </WavyBackground>
+                   <div className="z-0 fixed -top-20 -right-20 w-96 h-96 bg-[#9aff72] rounded-full mix-blend-multiply filter blur-3xl  grow-shrink animate-grow-shrink pointer-events-none"></div>
+                   <div className="z-0 fixed -bottom-20 -left-20 w-96 h-96 bg-[#e3816f] rounded-full mix-blend-multiply filter blur-3xl grow-shrink animate-grow-shrink-delayed pointer-events-none"></div>
+               
+       
+                   <div className="relative w-full min-h-screen z-10">
+                       <div className=" z-4 w-full h-fit inset-0 items-center px-5">
+                           <Navbar />
+                       </div>
+                       
+                        <div className="gap-10 grid w-3/4 px-10 max-w-full place-self-center">
+                           <div className="bg-[#ff687e] h-5/12 border-1 border-white rounded-3xl">
+                               <Image
+                                   className="z-90 h-full border-1 border-white opacity-80  object-cover rounded-3xl w-full"
+                                   src="/matcha/projectsMatcha.jpeg"
+                                   alt="coffee cup"
+                                   width={3000}
+                                   height={3000}
+                               />
+       
+                           </div>
+                           
+                           <div className="-translate-y-280 self-center text-center justify-center place-self-center flex flex-col text-white"><div className="text-[#ffffff] font-[display-font] text-6xl hover:text-7xl transition-all duration-300">EXPERIENCES</div>
+                       
+                           <div className="text-white flex-wrap text-lg font-[body-font] hover:text-xl transition-all duration-300">
+                          two sentences about experiences
+                           </div>
+       
+                               
+                           </div>
+       
+                            <div className=" flex flex-row justify-between bottom-0 left-0 ">
+                               <Image
+                                   className="object-fill place-self-end -translate-y-290 -translate-x-20 z-100 hover:scale-110 transition-all duration-300"
+                                   src="/decor/heartleft.png"
+                                   alt="pouring coffee"
+                                   width={150}
+                                   height={150}
+                               />
+                               <Image
+                                   className="object-fill place-self-end -translate-y-380 translate-x-30 z-100 hover:scale-110 transition-all duration-300"
+                                   src="/decor/heartright.png"
+                                   alt="pouring coffee"
+                                   width={200}
+                                   height={200}
+                               />
+                                            
+                           </div>  
 
-                
-                <div className="flex flex-row justify-between pl-20 pr-20 bg-black">
-                     <div className="text-left flex flex-col w-1/3 ">
-                        <span className="font-[display-font] text-white">title</span> 
-                        <span className="font-[subheading-font] text-white">gibberish description ig</span> 
-                    </div>
+                           <div className="-translate-y-270">
+                                <Reel></Reel>
 
-                    <div className="relative flex w-2/5">
-                        <Image
-                            className="object-center -translate-y-20"
-                            src="/coffee/coffeecup.png"
-                            alt="coffee cup"
-                            width={3000}
-                            height={3000}
-                        />
-                    </div>
-                </div>
+                           </div>
 
-                <div className="bg-black h-40"></div>
+                            <div className="bg-black h-40 px-10 ">
 
+                            </div>
+                           
+                        </div>  
+
+
+{/* 
                 <div
                     ref={carouselRef}
                     className=" z-100 flex justify-center w-full"
@@ -200,9 +173,9 @@ export default function Experiences() {
                         ))}
                         </CarouselContent>
                     </Carousel>
-                </div>
+                </div> */}
                 
-                <div className="flex flex-row p-20">
+                {/* <div className="flex flex-row p-20">
                     <div className="flex flex-col">
                         <span className="">1 gibberish</span>
                         <span className="">2 gibberish</span>
@@ -215,7 +188,7 @@ export default function Experiences() {
                         <span className="">4 gibberish</span>
                     </div>
 
-                </div>
+                </div> */}
 
             </div>
         </div>

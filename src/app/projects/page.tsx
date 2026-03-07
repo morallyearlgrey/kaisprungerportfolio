@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
 import { ExternalLink, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { useRouter } from "next/navigation";
 
@@ -11,7 +12,12 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-} from "@/components/ui/carousel";
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
+import Autoplay from "embla-carousel-autoplay";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import {
   Card,
@@ -26,8 +32,8 @@ import {
 import { trpc } from "@/trpc/client";
 import React, { useState, useEffect, useRef, useMemo } from "react";
 
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { WavyBackground } from "@/components/ui/wavy-background";
+
 
 if (typeof window !== "undefined") {
     gsap.registerPlugin(ScrollTrigger);
@@ -41,6 +47,7 @@ interface Project {
     longDescription: string;
     projectLink: string;
     winnerTags: string;
+    projectColor: string;
 }
 
 interface ProjectPhoto {
@@ -56,6 +63,8 @@ interface ProjectWithPhotos extends Project {
 }
 
 export default function Projects() {
+    const carouselRef = useRef(null);
+
     const { data: projects } = trpc.projects.getAllProjects.useQuery();
     const { data: projectPhotos } = trpc.projects.getAllProjectPhotos.useQuery();
 
@@ -93,6 +102,28 @@ export default function Projects() {
         };
     }, [selectedProject]);
 
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+        gsap.fromTo(
+            carouselRef.current,
+            { opacity: 0, y: 100 },
+            {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: "power3.out",
+            scrollTrigger: {
+                trigger: carouselRef.current,
+                start: "top 80%",
+            },
+            }
+        );
+
+       
+        }
+    }, [selectedProject]);
+
+
     const handleProjectClick = (project: ProjectWithPhotos) => {
         setSelectedProject(project);
         setCurrentPhotoIndex(0);
@@ -103,48 +134,93 @@ export default function Projects() {
         setCurrentPhotoIndex(0);
     };
 
-    const handleNextPhoto = () => {
-        if (selectedProject && selectedProject.photos.length > 1) {
-            setCurrentPhotoIndex((prev) => (prev + 1) % selectedProject.photos.length);
-        }
-    };
-
-    const handlePrevPhoto = () => {
-        if (selectedProject && selectedProject.photos.length > 1) {
-            setCurrentPhotoIndex((prev) =>
-                prev === 0 ? selectedProject.photos.length - 1 : prev - 1
-            );
-        }
-    };
 
     return (
-        <div className="flex flex-col max-w-screen bg-black">
-            <div className="relative w-full h-[120vh]">
-                <div className="z-4 w-full h-fit inset-0 items-center px-5 bg-black">
+        <div className="relative  flex w-full flex-col max-w-screen overflow-x-hidden ">
+            <WavyBackground colors={["#ffffff", "#ffffff", "#ffffff", "#ffffff", "#ffffff"]}
+                  waveWidth={10}
+                  blur={5}
+                  speed="fast"
+                  waveOpacity={0.9}
+                  backgroundFill="#eeb7b7"
+                  className="text-center px-4 fixed" 
+                  containerClassName="fixed inset-0 w-full h-screen"> 
+            </WavyBackground>
+            <div className="z-0 fixed -top-20 -right-20 w-96 h-96 bg-[#9aff72] rounded-full mix-blend-multiply filter blur-3xl  grow-shrink animate-grow-shrink pointer-events-none"></div>
+            <div className="z-0 fixed -bottom-20 -left-20 w-96 h-96 bg-[#e3816f] rounded-full mix-blend-multiply filter blur-3xl grow-shrink animate-grow-shrink-delayed pointer-events-none"></div>
+        
+
+            <div className="relative w-full min-h-screen z-10">
+                <div className=" z-4 w-full h-fit inset-0 items-center px-5">
                     <Navbar />
                 </div>
                 
-                <div className="w-full p-10">
-                    <Image
-                        className="object-cover border-1 border-amber-600 rounded-3xl"
-                        src="/coffee/lofi-girl.jpeg"
-                        alt="coffee cup"
-                        width={3000}
-                        height={3000}
-                    />
-                    <div className="-translate-y-100 place-self-center flex flex-col text-white">
-                        <span className="font-[display-font] text-white">title</span> 
-                        <span className="font-[subheading-font] text-white">gibberish description ig</span>
+                 <div className="gap-10 grid w-3/4 px-10 max-w-full place-self-center">
+                    <div className="bg-[#ff687e] h-4/12 border-1 border-white rounded-3xl">
+                        <Image
+                            className="z-90 h-full border-1 border-white opacity-80  object-cover rounded-3xl w-full"
+                            src="/matcha/projectsMatcha.jpeg"
+                            alt="coffee cup"
+                            width={3000}
+                            height={3000}
+                        />
+
                     </div>
+                    
+                    <div className="-translate-y-280 self-center text-center justify-center place-self-center flex flex-col text-white"><div className="text-[#ffffff] font-[display-font] text-6xl hover:text-7xl transition-all duration-300">PROJECTS</div>
+                
+                    <div className="text-white flex-wrap text-lg font-[body-font] hover:text-xl transition-all duration-300">
+                   two sentences about projects
+                    </div>
+
+                        
+                    </div>
+
+                     <div className=" flex flex-row justify-between bottom-0 left-0 ">
+                        <Image
+                            className="object-fill place-self-end -translate-y-290 -translate-x-20 z-100 hover:scale-110 transition-all duration-300"
+                            src="/decor/heartleft.png"
+                            alt="pouring coffee"
+                            width={150}
+                            height={150}
+                        />
+                        <Image
+                            className="object-fill place-self-end -translate-y-380 translate-x-30 z-100 hover:scale-110 transition-all duration-300"
+                            src="/decor/heartright.png"
+                            alt="pouring coffee"
+                            width={200}
+                            height={200}
+                        />
+                                     
+                    </div>  
 
                     {projectsWithPhotos[0] && (
                         <div 
-                            onClick={() => handleProjectClick(projectsWithPhotos[0])}
-                            className="absolute -translate-y-10 w-2/3 place-self-center grid grid-cols-2 border-2 border-amber-700 rounded-2xl cursor-pointer hover:border-amber-500 transition-colors"
+                            className="z-100 absolute -translate-y-210 w-1/2 place-self-center grid grid-cols-2 rounded-4xl  duration-300 hover:scale-105 transition-all
+                            backdrop-blur-sm
+                            bg-[#ff687e]/30
+                            hover:bg-[#ff687e]/50
+                            border-1
+                            border-white
+                            backdrop-saturate-250
+                            shadow-[0_8px_32px_0_rgba(0,0,0,0.12)]
+                            hover:shadow-[0_8px_32px_0_rgba(0,0,0,0.18)]
+                            duration-300 
+                            ease-out
+                            transition-all 
+                            before:absolute
+                            before:inset-0
+                            before:rounded-4xl
+                            before:p-[3px]
+                            before:bg-[linear-gradient(to_right,white,transparent_25%,transparent_75%,white),linear-gradient(to_bottom,white,transparent_25%,transparent_75%,white)]
+                            before:opacity-50
+                            before:-z-10
+                            
+                            "
                         >
                             <div className="relative">
                                 <Image
-                                    className="object-cover rounded-l-2xl"
+                                    className="object-cover rounded-l-4xl h-full"
                                     src={projectsWithPhotos[0].photos[0].photoUrl}
                                     alt="coffee cup"
                                     width={3000}
@@ -154,7 +230,29 @@ export default function Projects() {
                                 <div className="absolute bottom-4 right-4 z-10">
                                     <Link
                                         href={projectsWithPhotos[0].projectLink}
-                                        className="flex items-center gap-1 bg-amber-600 text-black px-3 py-2 rounded-lg shadow-lg hover:bg-amber-500 transition"
+                                        onClick={() => handleProjectClick(projectsWithPhotos[0])}
+                                        className="flex items-center gap-1  text-white px-3 py-2
+                                        bg-[#a0d963]/80
+                                        hover:scale-110
+                                        cursor-pointer
+                                        backdrop-blur-sm
+                                        border-1
+                                        border-white
+                                        backdrop-saturate-250
+                                        shadow-[0_8px_32px_0_rgba(0,0,0,0.12)]
+                                        hover:shadow-[0_8px_32px_0_rgba(0,0,0,0.18)]
+                                        duration-300 
+                                        ease-out
+                                        transition-all 
+                                        rounded-full
+                                        before:absolute
+                                        before:inset-0
+                                        before:rounded-full
+                                        before:p-[3px]
+                                        before:bg-[linear-gradient(to_right,white,transparent_25%,transparent_75%,white),linear-gradient(to_bottom,white,transparent_25%,transparent_75%,white)]
+                                        before:opacity-50
+                                        before:-z-10
+                                        "
                                         onClick={(e) => e.stopPropagation()}
                                     >
                                         View
@@ -163,162 +261,236 @@ export default function Projects() {
                                 </div>
                             </div>
                             <div className="p-6 flex flex-col justify-center">
-                                <span className="text-white text-lg font-semibold">Featured: {projectsWithPhotos[0].name}</span>
-                                <span className="text-gray-400">{projectsWithPhotos[0].location}</span>
-                                <span className="text-gray-300 mt-2">{projectsWithPhotos[0].shortDescription}</span>
+                                <span className="text-white text-xl font-[subheading-font]">Featured: {projectsWithPhotos[0].name}</span>
+                                <span className="text-white/80 text-lg font-[body-font]">{projectsWithPhotos[0].location}</span>
+                                <span className="font-[body-font] text-white mt-2">{projectsWithPhotos[0].shortDescription}</span>
                             </div>
                         </div>
                     )}
+
+                    
+
+                     <div className=" w-full  max-w-full h-11/12 place-self-center  -translate-y-210
+                bg-[#ff687e]/80
+                  hover:bg-[#ff687e]/50
+                  backdrop-blur-sm
+                  border
+                  border-white
+                  backdrop-saturate-400
+                  shadow-[0_8px_32px_0_rgba(0,0,0,0.12)]
+                  hover:shadow-[0_8px_32px_0_rgba(0,0,0,0.18)]
+                  duration-300 
+                  ease-out
+                  transition-all 
+                  rounded-4xl
+                  before:absolute
+                  before:inset-0
+                  before:rounded-4xl
+                  before:bg-[linear-gradient(to_right,white,transparent_20%,transparent_80%,white),linear-gradient(to_bottom,white,transparent_20%,transparent_80%,white)]
+                  before:opacity-70
+                  before:-z-10
+              
+            ">
+
+                <div className="bg-[#ff687e] w-full rounded-t-4xl">
+                    <Image
+                            className="object-cover rounded-t-4xl h-70  opacity-80 w-full"
+                            src="/decor/recentevents.jpg"
+                            alt=""
+                            width={1000}
+                            height={1000}
+                        />
+                    </div>
+
+                <div className="-translate-y-20 text-white font-[display-font] tracking-wide text-5xl hover:text-5xl duration-300 transition-all text-center hover:text-6xl">
+                        RECENT PROJECTS
                 </div>
 
-                <div className="p-10">
-                    <div className="flex items-center gap-6">
-                        <div className="flex-grow h-px bg-amber-400"></div>
-                        <h2 className="font-semibold tracking-wide text-white">
-                            PROJECTS
-                        </h2>
-                        <div className="flex-grow h-px bg-amber-400"></div>
-                    </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-                        {projectsWithPhotos.map((item, index) => (
-                            <div 
-                                key={item.id}
-                                onClick={() => handleProjectClick(item)}
-                                className="cursor-pointer group"
-                            >
-                                <div className="flex flex-col rounded-lg bg-zinc-900 hover:bg-zinc-800 transition-colors overflow-hidden">
-                                    <div className="relative h-64">
-                                        <Image
-                                            className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
-                                            src={item.photos[0].photoUrl}
-                                            alt={item.name}
-                                            width={2000}
-                                            height={2000}
-                                        />
-                                    </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 p-10 -translate-y-20">
+                            {projectsWithPhotos.map((item, index) => (
+                                <div 
+                                    key={item.id}
+                                    onClick={() => handleProjectClick(item)}
+                                    className="cursor-pointer group "
+                                >
+                                    
+                                    <div className={`relative rounded-3xl overflow-hidden group
+                                     backdrop-blur-sm
+                                    hover:bg-[#ff687e]/50
+                                    hover:scale-107
+                                    border-1
+                                    border-white
+                                    backdrop-saturate-250
+                                    shadow-[0_8px_32px_0_rgba(0,0,0,0.12)]
+                                    hover:shadow-[0_8px_32px_0_rgba(0,0,0,0.18)]
+                                    duration-300 
+                                    ease-out
+                                    transition-all 
+                                    before:absolute
+                                    before:inset-0
+                                    before:rounded-3xl
+                                    before:p-[3px]
+                                    before:bg-[linear-gradient(to_right,white,transparent_15%,transparent_85%,white),linear-gradient(to_bottom,white,transparent_15%,transparent_85%,white)]
+                                    before:opacity-75
+                                    before:-z-10
+                                            
+                                    `} style={{
+                                        backgroundColor: `${item.projectColor}BF` // 4D is hex for 30% opacity
+                                    }}>
+                                       
+                                        <div className={`
+                                        `}>
+                                            <div className="relative h-64">
+                                                <Image
+                                                    className="object-cover w-full h-full transition-transform duration-300"
+                                                    src={item.photos[0].photoUrl}
+                                                    alt={item.name}
+                                                    width={2000}
+                                                    height={2000}
+                                                />
+                                            </div>
 
-                                    <div className="p-4 flex flex-col">
-                                        <div className="text-white font-semibold text-lg mb-1">{item.name}</div>
-                                        <span className="text-gray-400 text-sm mb-2">{item.location}</span>
-                                        <span className="text-gray-300 text-sm line-clamp-2">{item.shortDescription}</span>
+                                            <div className="p-5 flex flex-col">
+                                                <div className="text-white font-[subheading-font] text-lg mb-1 transition-all duration-300 hover:text-xl">{item.name}</div>
+                                                <span className="text-white/80  font-[subheading-font] transition-all duration-300 hover:text-base text-sm mb-2 ">{item.location}</span>
+                                                <span className="text-white font-[body-font] transition-all duration-300 hover:text-base text-sm line-clamp-2">{item.shortDescription}</span>
+                                            </div>
+                                        </div>
+
+                                       
+
                                     </div>
                                 </div>
-                            </div>
-                        ))}
-                    </div>
+                            ))}
                 </div>
             </div>
 
-            {/* Full Screen Modal */}
+                    
+                </div>
+
+                
+                   
+        </div>
+
             {selectedProject && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90">
-                    <div className="w-full h-full max-w-7xl mx-auto p-4 md:p-8 flex flex-col md:flex-row gap-8 overflow-y-auto">
-                        {/* Image Carousel Section */}
-                        <div className="flex-1 flex flex-col">
-                            <div className="relative flex-1 bg-zinc-900 rounded-lg overflow-hidden min-h-[400px]">
-                                {/* Close Button - Top Right */}
-                                <button
-                                    onClick={handleCloseModal}
-                                    className="absolute top-4 right-4 z-20 p-2 bg-black bg-opacity-50 hover:bg-opacity-70 rounded-full transition-all"
-                                >
-                                    <X className="text-white" size={24} />
-                                </button>
-
-                                {/* Carousel Navigation */}
-                                {selectedProject.photos.length > 1 && (
-                                    <>
-                                        <button
-                                            onClick={handlePrevPhoto}
-                                            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-2 bg-black bg-opacity-50 hover:bg-opacity-70 rounded-full transition-all"
-                                        >
-                                            <ChevronLeft className="text-white" size={24} />
-                                        </button>
-                                        <button
-                                            onClick={handleNextPhoto}
-                                            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-2 bg-black bg-opacity-50 hover:bg-opacity-70 rounded-full transition-all"
-                                        >
-                                            <ChevronRight className="text-white" size={24} />
-                                        </button>
-                                    </>
-                                )}
-
-                                {/* Main Image */}
-                                <div className="relative w-full h-full">
+                <div className="fixed inset-0 z-100 flex items-center justify-center backdrop-blur-md">
+                    <div className="w-1/2  overflow-y-auto overflow-x-hidden
+                    duration-300
+                    transition-all
+                    bg-[#ff687e]/70
+                    hover:bg-[#ff687e]/50
+                    backdrop-blur-sm
+                    backdrop-saturate-400
+                    shadow-[0_8px_32                
+                    hover:shadow-[0_8px_32px_0_rgba(0,0,0,0.18)]
+                    ease-out
+                    before:absolute
+                    before:inset-0
+                    before:bg-[linear-gradient(to_right,white,transparent_30%,transparent_70%,white),linear-gradient(to_bottom,white,transparent_30%,transparent_70%,white)]
+                    before:opacity-60
+                    before:-z-10
+                    ">
+                        <div className="flex justify-end">
+                            <button
+                                onClick={handleCloseModal}
+                                className="cursor-pointer hover:scale-115 duration-300 transition-all z-100 p-2 rounded-full
+                                bg-[#ff687e]/70
+                                hover:bg-[#ff687e]/50
+                                backdrop-blur-sm
+                                border
+                                border-white
+                                backdrop-saturate-400
+                                shadow-[0_8px_32px_0_rgba(0,0,0,0.12)]
+                                hover:shadow-[0_8px_32px_0_rgba(0,0,0,0.18)]
+                                ease-out
+                                before:absolute
+                                before:inset-0
+                                before:rounded-full
+                                before:bg-[linear-gradient(to_right,white,transparent_40%,transparent_60%,white),linear-gradient(to_bottom,white,transparent_40%,transparent_60%,white)]
+                                before:opacity-60
+                                before:-z-10
+                                text-white
+                                translate-y-20
+                                -translate-x-10
+                                "
+                            ><X></X></button>
+                        </div>
+                        <Carousel className="h-fit place-self-center" plugins={[Autoplay({ delay: 2000 })]}>
+                        <CarouselContent className="p-5 h-full">
+                            {selectedProject.photos.map((item, index) => (
+                                <CarouselItem key={index} className="h-full">
                                     <Image
-                                        className="object-contain w-full h-full"
-                                        src={selectedProject.photos[currentPhotoIndex].photoUrl}
-                                        alt={selectedProject.name}
+                                        className=" w-full h-fit rounded-xl"
+                                        src={item.photoUrl}
+                                        alt="coffee cup"
                                         width={3000}
                                         height={3000}
                                     />
+                                    <Link className="hover:scale-110 duration-300 transition-all cursor-pointer w-fit pr-3 items-center justify-center pl-3 place-self-end m-3 -translate-y-20 rounded-xl p-1 text-white flex flex-col
+                                    
+                                    bg-[#ff687e]/70
+                                    hover:bg-[#ff687e]/50
+                                    backdrop-blur-sm
+                                    border
+                                    border-white
+                                    backdrop-saturate-400
+                                    shadow-[0_8px_32px_0_rgba(0,0,0,0.12)]
+                                    hover:shadow-[0_8px_32px_0_rgba(0,0,0,0.18)]
+                                    ease-out
+                                    before:absolute
+                                    before:inset-0
+                                    before:rounded-xl
+                                    before:bg-[linear-gradient(to_right,white,transparent_30%,transparent_70%,white),linear-gradient(to_bottom,white,transparent_30%,transparent_70%,white)]
+                                    before:opacity-60
+                                    before:-z-10
+                                    text-white
+                                    " href={selectedProject.projectLink}>View <ExternalLink></ExternalLink></Link>
+                                </CarouselItem>
 
-                                    {/* Project Name - Bottom Left */}
-                                    <div className="absolute bottom-4 left-4 z-10">
-                                        <h2 className="text-white text-2xl font-bold bg-black bg-opacity-50 px-4 py-2 rounded">
-                                            {selectedProject.name}
-                                        </h2>
-                                    </div>
+                            ))}
 
-                                    {/* External Link - Bottom Right */}
-                                    <div className="absolute bottom-4 right-4 z-10">
-                                        <a
-                                            href={selectedProject.projectLink}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="flex items-center gap-2 bg-amber-600 text-black px-4 py-2 rounded-lg shadow-lg hover:bg-amber-500 transition"
-                                            onClick={(e) => e.stopPropagation()}
-                                        >
-                                            View
-                                            <ExternalLink size={16} />
-                                        </a>
-                                    </div>
-                                </div>
+                        </CarouselContent>
+                        </Carousel>
 
-                                {/* Photo Counter */}
-                                {selectedProject.photos.length > 1 && (
-                                    <div className="absolute top-4 left-1/2 -translate-x-1/2 z-20 bg-black bg-opacity-50 px-3 py-1 rounded-full">
-                                        <span className="text-white text-sm">
-                                            {currentPhotoIndex + 1} / {selectedProject.photos.length}
-                                        </span>
-                                    </div>
-                                )}
-                            </div>
+                        <div className="-translate-y-37 translate-x-10 text-white font-[subheading-font] text-xl hover:text-2xl duration-300 transition-all w-fit">{selectedProject.name}</div>
+                        
+
+                        <div className="flex flex-col -translate-y-30 gap-3 p-6">
+                            <div className="w-fit rounded-full pl-2 pr-2
+                            bg-[#ff687e]/70
+                            hover:bg-[#ff687e]/50
+                            backdrop-blur-sm
+                            border
+                            border-white
+                            backdrop-saturate-400
+                            shadow-[0_8px_32px_0_rgba(0,0,0,0.12)]
+                            hover:shadow-[0_8px_32px_0_rgba(0,0,0,0.18)]
+                            ease-out
+                            before:absolute
+                            before:inset-0
+                            before:rounded-full
+                            before:bg-[linear-gradient(to_right,white,transparent_30%,transparent_70%,white),linear-gradient(to_bottom,white,transparent_30%,transparent_70%,white)]
+                            before:opacity-60
+                            before:-z-10
+                            text-white
+                            ">{selectedProject.location}</div>
+
+                            <div className="text-white ">{selectedProject.longDescription}</div>
+
                         </div>
 
-                        {/* Details Section */}
-                        <div className="w-full md:w-96 flex flex-col gap-6 overflow-y-auto">
-                            {/* Location */}
-                            <div>
-                                <h3 className="text-amber-500 font-semibold mb-2 text-sm uppercase tracking-wide">
-                                    Location
-                                </h3>
-                                <p className="text-white text-lg">{selectedProject.location}</p>
-                            </div>
 
-                            {/* Long Description */}
-                            <div>
-                                <h3 className="text-amber-500 font-semibold mb-2 text-sm uppercase tracking-wide">
-                                    Description
-                                </h3>
-                                <p className="text-gray-300 leading-relaxed">{selectedProject.longDescription}</p>
-                            </div>
 
-                            {/* Winner Tags */}
-                            {selectedProject.winnerTags && (
-                                <div>
-                                    <h3 className="text-amber-500 font-semibold mb-2 text-sm uppercase tracking-wide">
-                                        Awards
-                                    </h3>
-                                    <span className="inline-block px-3 py-1 bg-amber-600 text-black rounded-full text-sm font-semibold">
-                                        {selectedProject.winnerTags}
-                                    </span>
-                                </div>
-                            )}
-                        </div>
-                    </div>
+                     </div>   
+
                 </div>
+
             )}
+            <div className="pb-10 w-4/6 self-center">
+                            <Footer ></Footer>
+            
+                          </div>
         </div>
     )
 }

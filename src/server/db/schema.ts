@@ -65,6 +65,7 @@ export const Experiences = pgTable("experiences", {
   dateRange: varchar("date_range", { length: 100 }).notNull(), // e.g., "Jan 2020 - Dec 2022"
   location: varchar("location", { length: 255 }),
   description: text("description"),
+  numberLikes: integer("likes").notNull().default(0),
   responsibilities: text("responsibilities"), // Can store as JSON array or newline-separated
   createdAt: timestamp("created_at", { mode: "date" }).notNull().defaultNow(),
   updatedAt: timestamp("updated_at", { mode: "date" }).notNull().defaultNow(),
@@ -74,6 +75,15 @@ export const ExperiencePhotos = pgTable("experience_photos", {
   id: uuid("id").primaryKey().defaultRandom(),
   experienceId: uuid("experience_id").notNull().references(() => Experiences.id, { onDelete: "cascade" }),
   photoUrl: text("photo_url").notNull(),
+  caption: text("caption"),
+  order: integer("order").notNull().default(0), // For ordering photos
+  createdAt: timestamp("created_at", { mode: "date" }).notNull().defaultNow(),
+});
+
+export const ExperienceVideos = pgTable("experience_videos", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  experienceId: uuid("experience_id").notNull().references(() => Experiences.id, { onDelete: "cascade" }),
+  videoUrl: text("video_url").notNull(),
   caption: text("caption"),
   order: integer("order").notNull().default(0), // For ordering photos
   createdAt: timestamp("created_at", { mode: "date" }).notNull().defaultNow(),
@@ -90,10 +100,11 @@ export const ExperienceSkills = pgTable("experience_skills", {
 
 export const Events = pgTable("events", {
   id: uuid("id").primaryKey().defaultRandom(),
+  index: integer("index").notNull(),
   headline: varchar("headline", { length: 255 }).notNull(),
   date: varchar("date", { length: 255 }).notNull(),
   location: varchar("location", { length: 255 }),
-  description: varchar("description", { length: 255 }).notNull(),
+  description: varchar("description", { length: 2000 }).notNull(),
   photoUrl: text("photo_url").notNull(),
   caption: text("caption"),
   createdAt: timestamp("created_at", { mode: "date" }).notNull().defaultNow(),
@@ -113,9 +124,9 @@ export const Events = pgTable("events", {
 
 export const Songs = pgTable("songs", {
   id: uuid("id").primaryKey().defaultRandom(),
-  songName: varchar("date", { length: 255 }).notNull(),
-  artistName: varchar("date", { length: 255 }).notNull(),
-  url: varchar("date", { length: 255 }).notNull(),
+  songName: varchar("songName", { length: 255 }).notNull(),
+  artistName: varchar("artistName", { length: 255 }).notNull(),
+  url: varchar("url", { length: 255 }).notNull(),
   createdAt: timestamp("created_at", { mode: "date" }).notNull().defaultNow(),
   updatedAt: timestamp("updated_at", { mode: "date" }).notNull().defaultNow(),
 
@@ -130,6 +141,7 @@ export const Projects = pgTable("projects", {
   shortDescription: varchar("short_description", { length: 500 }),
   longDescription: text("long_description"),
   projectLink: text("project_link"),
+  projectColor: text("project_color"),
   winnerTags: text("winner_tags"), // Store as JSON array or comma-separated
   createdAt: timestamp("created_at", { mode: "date" }).notNull().defaultNow(),
   updatedAt: timestamp("updated_at", { mode: "date" }).notNull().defaultNow(),
@@ -195,6 +207,7 @@ export const SkillsRelations = relations(Skills, ({ many }) => ({
 export const ExperiencesRelations = relations(Experiences, ({ many }) => ({
   photos: many(ExperiencePhotos),
   skills: many(ExperienceSkills),
+  videos: many(ExperienceVideos)
 }));
 
 export const ExperiencePhotosRelations = relations(ExperiencePhotos, ({ one }) => ({
@@ -203,6 +216,14 @@ export const ExperiencePhotosRelations = relations(ExperiencePhotos, ({ one }) =
     references: [Experiences.id],
   }),
 }));
+
+export const ExperienceVideosRelations = relations(ExperienceVideos, ({ one }) => ({
+  experience: one(Experiences, {
+    fields: [ExperienceVideos.experienceId],
+    references: [Experiences.id],
+  }),
+}));
+
 
 export const ExperienceSkillsRelations = relations(ExperienceSkills, ({ one }) => ({
   experience: one(Experiences, {
@@ -238,18 +259,6 @@ export const ProjectSkillsRelations = relations(ProjectSkills, ({ one }) => ({
   }),
 }));
 
-// export const EventRelations = relations(Events, ({ many }) => ({
-//   photos: many(EventPhotos),
-// }));
-
-// export const EventPhotosRelations = relations(EventPhotos, ({ one }) => ({
-//   experience: one(Events, {
-//     fields: [EventPhotos.eventId],
-//     references: [Events.id],
-//   }),
-// }));
-
-
 // ==== Type Inference ====
 
 // Auth types
@@ -266,6 +275,10 @@ export type NewVerificationToken = typeof VerificationTokens.$inferInsert;
 export type Skill = typeof Skills.$inferSelect;
 export type NewSkill = typeof Skills.$inferInsert;
 
+// Song types
+export type Song = typeof Songs.$inferSelect;
+export type NewSong = typeof Songs.$inferSelect;
+
 // Experience types
 export type Experience = typeof Experiences.$inferSelect;
 export type NewExperience = typeof Experiences.$inferInsert;
@@ -273,6 +286,8 @@ export type ExperiencePhoto = typeof ExperiencePhotos.$inferSelect;
 export type NewExperiencePhoto = typeof ExperiencePhotos.$inferInsert;
 export type ExperienceSkill = typeof ExperienceSkills.$inferSelect;
 export type NewExperienceSkill = typeof ExperienceSkills.$inferInsert;
+export type ExperienceVideo = typeof ExperienceVideos.$inferSelect;
+export type NewExperienceVideo = typeof ExperienceVideos.$inferInsert;
 
 // Project types
 export type Project = typeof Projects.$inferSelect;
