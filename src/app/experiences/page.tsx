@@ -6,6 +6,23 @@ import { Reel } from "@/components/experience/reel";
 import { WavyBackground } from "@/components/ui/wavy-background";
 import { Footer } from "@/components/footer";
 
+
+import type { Metadata } from "next";
+
+const pageTitle = "Experience | Kai Sprunger";
+const pageDescription = "Internships and organization roles throughout my career.";
+
+export const metadata: Metadata = {
+    title: pageTitle,
+    description: pageDescription,
+    openGraph: {
+        title: pageTitle,
+        description: pageDescription,
+        url: "https://kaisprunger.com/experiences",
+        type: "website",
+    },
+};
+
 export default function Experiences() {
     return (
         <div className="relative flex w-full flex-col max-w-screen overflow-x-hidden">
@@ -42,7 +59,7 @@ export default function Experiences() {
                                 EXPERIENCES
                             </h1>
                             <p className="text-white font-[body-font] text-sm sm:text-base md:text-lg hover:text-base sm:hover:text-lg md:hover:text-xl transition-all duration-300 mt-2 max-w-md ">
-                                two sentences about experiences
+                                Explore my career experiences through short reels that highlight the internship positions and organization roles I've taken on. Each one captures a different snapshot of my journey.
                             </p>
                         </div>
 

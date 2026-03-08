@@ -41,6 +41,22 @@ interface ProjectWithPhotos extends Project {
     photos: ProjectPhoto[];
 }
 
+import type { Metadata } from "next";
+
+const pageTitle = "Projects | Kai Sprunger";
+const pageDescription = "A collection of full-stack, machine learning, and systems projects.";
+
+export const metadata: Metadata = {
+    title: pageTitle,
+    description: pageDescription,
+    openGraph: {
+        title: pageTitle,
+        description: pageDescription,
+        url: "https://kaisprunger.com/projects",
+        type: "website",
+    },
+};
+
 export default function Projects() {
     const { data: projects } = trpc.projects.getAllProjects.useQuery();
     const { data: projectPhotos } = trpc.projects.getAllProjectPhotos.useQuery();
@@ -104,7 +120,7 @@ export default function Projects() {
                                 PROJECTS
                             </h1>
                             <p className="text-white font-[body-font] text-sm sm:text-base md:text-lg hover:text-base sm:hover:text-lg md:hover:text-xl transition-all duration-300 mt-2 max-w-md drop-shadow">
-                                Two sentences about projects
+                                Browse the projects I’ve created across hackathons, UCF courses, and my personal life. Each one represents a challenge solved, a skill learned, and an idea brought to life.
                             </p>
                         </div>
 

@@ -69,7 +69,6 @@ const aboutScript: {id: number; title: string; paragraph: string; highlight: str
 ];
 
 
-
 const highlightText = (text:string, wordsToHighlight:string[], isHovered:boolean) => {
   if(!isHovered || wordsToHighlight.length<1) {
     return text;
