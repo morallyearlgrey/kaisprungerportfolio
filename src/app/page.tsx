@@ -417,7 +417,6 @@ export default function Home() {
                   />
                 </div>
                 
-                {/* dude i should prob componentify this or make it into an array but im too lazy */}
                 <div className="flex flex-col text-white gap-2 self-center w-full pl-20 pr-20 lg:pl-0 lg:pr-15 ">
                   <div className="text-white text-center lg:text-start text-2xl font-[subheading-font] hover:text-3xl transition-all duration-300">THIS IS WHAT I'M MOST PROUD OF</div>
                  <div className="text-sm lg:text-base font-[subheading-font]  hover:text-lg hover:scale-105 transition-all duration-300  text-left lg:justify-start
@@ -625,7 +624,6 @@ export default function Home() {
                     RECENT EVENTS
               </div>
 
-              {/* ── Desktop layout (lg+): original side-by-side ── */}
               <div className="hidden lg:flex flex-row h-130 pr-10 pl-10 pb-10 gap-5 w-full">
                 <div className="w-2/3 bg-white/20 border-1 border-white/40 rounded-3xl">
                   <div className="bg-[#ff687e] rounded-t-3xl h-1/2 border-white">
@@ -668,10 +666,8 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* ── Mobile / tablet layout (< lg): featured card stacked above horizontal scroll strip ── */}
               <div className="flex lg:hidden flex-col px-4 pb-10 gap-4">
 
-                {/* Featured event card */}
                 <div className="w-full bg-white/20 border-1 border-white/40 rounded-3xl overflow-hidden">
                   <div className="bg-[#ff687e] rounded-t-3xl h-48 w-full">
                     <Image
@@ -689,7 +685,6 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Horizontal scrollable highlights strip */}
                 <div className="text-white font-[subheading-font] text-xl">HIGHLIGHTS</div>
                 <div className="flex flex-row gap-3 overflow-x-auto pb-2">
                   {Events?.map((item, index) => (

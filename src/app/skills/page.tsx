@@ -45,7 +45,6 @@ const SkillCube: React.FC<{ skill: Skill }> = ({ skill }) => {
                 transition-all duration-300 ease-out
                 bg-white/10 backdrop-blur-sm flex flex-col">
 
-                {/* Top 2/3: icon — fills the space with object-cover */}
                 <div className="relative bg-white/15 border-b border-white/20" style={{ flex: "2 2 0%" }}>
                     {skill.icon ? (
                         <Image
@@ -64,7 +63,6 @@ const SkillCube: React.FC<{ skill: Skill }> = ({ skill }) => {
                     )}
                 </div>
 
-                {/* Bottom 1/3: skill name */}
                 <div className="flex items-center justify-center px-1 bg-white/5" style={{ flex: "1 1 0%" }}>
                     <span className="text-white font-[subheading-font] text-[10px] sm:text-xs text-center leading-tight line-clamp-2 drop-shadow">
                         {skill.name}
