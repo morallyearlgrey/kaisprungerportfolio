@@ -407,7 +407,7 @@ export default function Home() {
                 </div>
                 
                 <div className="flex flex-col text-white gap-2 self-center w-full pl-20 pr-20 lg:pl-0 lg:pr-15 ">
-                  <div className="text-white text-center lg:text-start text-2xl font-[subheading-font] hover:text-3xl transition-all duration-300">THIS IS WHAT I'M MOST PROUD OF</div>
+                  <div className="text-white text-center lg:text-start text-2xl font-[subheading-font] hover:text-3xl transition-all duration-300">THIS IS WHAT I&apos;M MOST PROUD OF</div>
                  <div className="text-sm lg:text-base font-[subheading-font]  hover:text-lg hover:scale-105 transition-all duration-300  text-left lg:justify-start
                  bg-white/10 
                  p-3
@@ -618,7 +618,7 @@ export default function Home() {
                   <div className="bg-[#ff687e] rounded-t-3xl h-1/2 border-white">
                     <Image
                       className="object-cover h-full rounded-t-3xl opacity-80"
-                      src={currentEvent?.photoUrl || "/matcha/lofi-girl.jpeg"}
+                      src={currentEvent?.photoUrl ?? "/matcha/lofi-girl.jpeg"}
                       alt=""
                       width={2000}
                       height={2000}
@@ -661,7 +661,7 @@ export default function Home() {
                   <div className="bg-[#ff687e] rounded-t-3xl h-48 w-full">
                     <Image
                       className="object-cover h-full w-full rounded-t-3xl opacity-80"
-                      src={currentEvent?.photoUrl || "/matcha/lofi-girl.jpeg"}
+                      src={currentEvent?.photoUrl ?? "/matcha/lofi-girl.jpeg"}
                       alt=""
                       width={2000}
                       height={2000}
