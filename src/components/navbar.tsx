@@ -88,10 +88,10 @@ const Navbar: React.FC = () => {
 
         </div>
 
-        <div className="items-center w-1/3 justify-end gap-x-3 flex-row lg:flex hidden lg:display">
-            <Linkedin className="scale-110 text-white hover:scale-140 duration-300 transition-all cursor-pointer"></Linkedin>
-            <Github className="scale-110 text-white hover:scale-140 duration-300 transition-all cursor-pointer"></Github>
-            <Paperclip className="scale-110 text-white hover:scale-140 duration-300 transition-all cursor-pointer"></Paperclip>
+        <div className="cursor-pointer items-center w-1/3 justify-end gap-x-3 flex-row lg:flex hidden lg:display">
+            <Link href="https://www.linkedin.com/in/kaisprunger/"><Linkedin className="scale-110 text-white hover:scale-140 duration-300 transition-all cursor-pointer"></Linkedin></Link>
+            <Link href="https://github.com/morallyearlgrey"><Github className="scale-110 text-white hover:scale-140 duration-300 transition-all cursor-pointer"></Github></Link>
+            <Link href="/resume/kai-sprunger-resume.pdf"><Paperclip  className="scale-110 text-white hover:scale-140 duration-300 transition-all cursor-pointer"></Paperclip></Link>
 
         </div>
         

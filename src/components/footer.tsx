@@ -47,7 +47,7 @@ const Footer: React.FC = () => {
 
         ">
             
-        <div className="text-white font-[body-font]">
+        <div className="text-white text-center font-[body-font]">
             Fueled by a cup of strawberry matcha.
         </div>
         <div className="text-white/80 text-sm font-[body-font]">

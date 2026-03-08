@@ -114,7 +114,7 @@ export const MusicPlayer = (() => {
             </div>
 
             {Songs &&
-                <div className="self-center text-[#eeffe7] font-[subheading-font] text-xl">{Songs[trackIndex]?.songName.toUpperCase()} by {Songs[trackIndex]?.artistName.toUpperCase()} playing...</div>
+                <div className="self-center text-[#eeffe7] font-[subheading-font] lg:text-xl text-sm">{Songs[trackIndex]?.songName.toUpperCase()} by {Songs[trackIndex]?.artistName.toUpperCase()} playing...</div>
             }
             </div>
 

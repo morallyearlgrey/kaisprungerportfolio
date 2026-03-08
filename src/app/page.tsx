@@ -53,20 +53,20 @@ type Event = {
 
 const aboutScript: {id: number; title: string; paragraph: string; highlight: string[]; image: string}[] = [
   { id: 1, title: "INTRODUCTION", paragraph: 
-   "Hello, my name is Kai Sprunger and I am a Software Engineer studying Computer Science at the University of Central Florida. No matter what challenge I face, I always embrace it with optimism. Throughout being the IEEE @ UCF Software Chair, the Knight Hacks Hackathon Lead, a NVIDIA Software Engineer, and a BNY Software Engineer, I’ve completed my work thoroughly with a smile. Just as my community has helped me in my lowest times, I hope that I can uplift others too and inspire them to keep on pursuing their goals.",
+   "Hello, my name is Kai Sprunger and I am a Software Engineer studying Computer Science at the University of Central Florida. No matter what challenge I face, I always embrace it with optimism. Throughout being the IEEE @ UCF Software Chair, the Knight Hacks Hackathon Lead, a NVIDIA Software Engineer, and a BNY Software Engineer, I've completed my work thoroughly with a smile. Just as my community has helped me in my lowest times, I hope that I can uplift others too and inspire them to keep on pursuing their goals.",
    highlight: ["Kai Sprunger", "Software Engineer", "University of Central Florida", "IEEE @ UCF Software Chair", "Knight Hacks Hackathon Lead", "NVIDIA", "BNY", "Computer Science"],
    image: "/decor/introduction.JPG",
   },
 
   { id: 2, title: "COMMUNITY", paragraph: 
-    "This portfolio is not here to exclusively display who I am. Several wonderful people at the University of Central Florida (UCF) have played significant roles in passing down technical knowledge, professional advice, and most importantly, a strong work ethic. Because I would not be who I am today without them, I hope that I can give back by being a heavily active student in UCF’s EECS community. As the Software Chair of IEEE @ UCF, I am leading a team of incredible SWEs in developing the organization’s website/member dashboard, Discord bot, and resume website. Additionally, within Knight Hacks, I work as a Hackathon Organizer, where I had the amazing opportunity to co-lead volunteers and co-organize for Knight Hacks VIII. I am so grateful for every core memory and skill boost I’ve gained through IEEE @ UCF and Knight Hacks. They are my second family and I owe everything to them.", 
+    "This portfolio is not here to exclusively display who I am. Several wonderful people at the University of Central Florida (UCF) have played significant roles in passing down technical knowledge, professional advice, and most importantly, a strong work ethic. Because I would not be who I am today without them, I hope that I can give back by being a heavily active student in UCF's EECS community. As the Software Chair of IEEE @ UCF, I am leading a team of incredible SWEs in developing the organization's website/member dashboard, Discord bot, and resume website. Additionally, within Knight Hacks, I work as a Hackathon Organizer, where I had the amazing opportunity to co-lead volunteers and co-organize for Knight Hacks VIII. I am so grateful for every core memory and skill boost I've gained through IEEE @ UCF and Knight Hacks. They are my second family and I owe everything to them.", 
    highlight: ["This portfolio is not here to exclusively display who I am.", "strong work ethic", "Software Chair of IEEE @ UCF", "Hackathon Organizer"],
    image: "/decor/community.png",
   },
 
   { id: 3, title: "CAREER", paragraph: 
-    "For me, the most fulfilling part of working as a Software Engineer is the moment when you finally feel proud of what you’ve developed. This feeling, built upon hours of parsing through Stack Overflow and programming on 400 mg of caffeine, is irreplaceable. I’ve experienced this sense of accomplishment through the projects I’ve completed within NVIDIA, BNY, and software development hackathons. As a former and returning Software Engineer Intern at NVIDIA, I increased the coverage of a RISC-V OS microkernel library from 77.7% to 97.1% and uncovered bugs, improving the reliability of the system. Within hackathons, I’ve worked on projects ranging from a tariff rate API/chrome extension, a networking application with a vector-based recommendation system, a hackathon organization website, and more. No matter the project, I’m driven by the satisfaction of solving difficult problems and the pride that comes with seeing your work come to life.",
-   highlight: ["For me, the most fulfilling part of working as a Software Engineer is the moment when you finally feel proud of what you’ve developed.", "Software Engineer Intern at NVIDIA", "hackathons"],
+    "For me, the most fulfilling part of working as a Software Engineer is the moment when you finally feel proud of what you've developed. This feeling, built upon hours of parsing through Stack Overflow and programming on 400 mg of caffeine, is irreplaceable. I've experienced this sense of accomplishment through the projects I've completed within NVIDIA, BNY, and software development hackathons. As a former and returning Software Engineer Intern at NVIDIA, I increased the coverage of a RISC-V OS microkernel library from 77.7% to 97.1% and uncovered bugs, improving the reliability of the system. Within hackathons, I've worked on projects ranging from a tariff rate API/chrome extension, a networking application with a vector-based recommendation system, a hackathon organization website, and more. No matter the project, I'm driven by the satisfaction of solving difficult problems and the pride that comes with seeing your work come to life.",
+   highlight: ["For me, the most fulfilling part of working as a Software Engineer is the moment when you finally feel proud of what you've developed.", "Software Engineer Intern at NVIDIA", "hackathons"],
    image: "/decor/career.jpeg",
   },
 
@@ -155,12 +155,12 @@ export default function Home() {
             <Navbar />
           </div>
 
-          <div className="gap-10 grid px-10 max-w-full">
+          <div className="lg:gap-10 lg:grid lg:px-10 lg:max-w-full py-10">
 
-            <div className="z-100 p-10 flex-col gap-y-2 flex translate-x-50">
-                <div className="text-[#ffffff] font-[display-font] text-7xl hover:text-8xl transition-all duration-300">KAI SPRUNGER</div>
-                <div className="typewriter text-4xl font-[subheading-font] max-w-fit text-white hover:text-5xl transition-all duration-300">SOFTWARE ENGINEER</div>
-                <div className="text-white flex-wrap text-lg font-[body-font] hover:text-xl transition-all duration-300">
+            <div className="lg:z-100 lg:p-10 flex-col lg:gap-y-2 flex lg:translate-x-50 ">
+                <div className="text-[#ffffff] font-[display-font] text-6xl hover:text-7xl lg:text-7xl lg:hover:text-8xl transition-all duration-300 text-center justify-center place-self-center lg:text-left lg:justify-start lg:place-self-start">KAI SPRUNGER</div>
+                <div className="lg:typewriter text-3xl hover:text-4xl lg:text-4xl font-[subheading-font] max-w-fit text-white lg:hover:text-5xl transition-all duration-300 text-center justify-center place-self-center lg:text-left lg:justify-start lg:place-self-start">SOFTWARE ENGINEER</div>
+                <div className="text-white flex-wrap text-lg font-[body-font] hover:text-xl transition-all duration-300 text-center justify-center place-self-center lg:text-left lg:justify-start lg:place-self-start">
                   Sophomore majoring in Computer Science at the University of Central Florida.
                 </div>
 
@@ -191,6 +191,8 @@ export default function Home() {
                   before:bg-[linear-gradient(to_right,white,transparent_25%,transparent_75%,white),linear-gradient(to_bottom,white,transparent_25%,transparent_75%,white)]
                   before:opacity-30
                   before:-z-10
+                  lg:self-start
+                  self-center
                   " onClick={() => router.push("/about")}
               >
                   <span>LEARN ABOUT WHO I AM...</span>
@@ -200,7 +202,7 @@ export default function Home() {
 
               </div>
 
-            <div className="absolute  left-1/2 -translate-x-1/2  w-3/4  max-w-full pl-10 pr-10 h-full">
+            <div className="absolute  left-1/2 -translate-x-1/2  lg:w-3/4 lg:py-0 py-20 max-w-full pl-10 pr-10 h-full">
                   
               <div className="bg-[#ff687e] border-1 border-white rounded-3xl h-8/12 
               ">
@@ -253,7 +255,7 @@ export default function Home() {
               >
                 <div className="bg-[#ff687e]  rounded-t-4xl">
               <Image
-                  className="object-cover rounded-t-4xl h-70  opacity-80 w-full"
+                  className="object-cover rounded-t-4xl h-70 opacity-80 w-full"
                   src="/decor/aboutme.jpg"
                   alt=""
                   width={1000}
@@ -261,7 +263,7 @@ export default function Home() {
                />
                   </div>
 
-               <div className="-translate-y-20 text-white font-[display-font] tracking-wide text-5xl hover:text-5xl duration-300 transition-all text-center hover:text-6xl">
+               <div className="-translate-y-20 text-white font-[display-font] tracking-wide text-4xl hover:text-5xl lg:text-5xl duration-300 transition-all text-center lg:hover:text-6xl">
                     ABOUT ME
               </div>
 
@@ -271,14 +273,14 @@ export default function Home() {
                   <Carousel className="w-full max-w-3xl">
                   <CarouselContent className="">
                     {aboutScript.map((item, index)=> (
-                      <CarouselItem className="flex flex-row place-content-center place-self-center self-center justify-center transition-all duration-300  gap-6 text-left" key={index}>
+                      <CarouselItem className="flex flex-col lg:flex-row place-content-center place-self-center self-center justify-center transition-all duration-300  gap-6 text-left" key={index}>
                         <div className="flex flex-col self-center text-left">
-                            <div className="text-left font-[subheading-font] text-white text-2xl hover:text-3xl transition-all duration-300">{item.title}</div>
-                            <div className="self-center text-justify text-white text-base leading-relaxed max-w-2xl transition-all duration-300" onMouseEnter={() => setHighlight(true)} onMouseLeave={() => setHighlight(false)}>
+                            <div className="text-center lg:text-left font-[subheading-font] text-white text-2xl hover:text-3xl transition-all duration-300">{item.title}</div>
+                            <div className="self-center md:pl-10 md:pr-10 pl-40 pr-40 lg:p-0 text-center lg:text-justify text-white text-base leading-relaxed max-w-2xl transition-all duration-300" onMouseEnter={() => setHighlight(true)} onMouseLeave={() => setHighlight(false)}>
                               {highlightText(item.paragraph, item.highlight, highlight)}
                             </div>
                         </div>
-                        <div className="border-1 border-white/80 bg-[#ff687e] rounded-3xl w-2/3  transition-all duration-300 hover:scale-100 scale-95">
+                        <div className="border-1 border-white/80 bg-[#ff687e] rounded-3xl lg:w-2/3 w-1/2 self-center lg:self-start transition-all duration-300 hover:scale-100 scale-95">
                            <Image
                               className="object-cover  border-1 border-white/80 rounded-3xl h-full w-full opacity-80"
                               src={item.image}
@@ -295,7 +297,8 @@ export default function Home() {
 
                     ))}
                   </CarouselContent>
-                  <CarouselPrevious className="bg-white/10 text-white hover:text-white
+
+                  <CarouselPrevious className="hidden lg:flex bg-white/10 text-white hover:text-white
                   hover:bg-[#ecf8e0]/30
                   backdrop-blur-sm
                   scale-150
@@ -319,9 +322,8 @@ export default function Home() {
                   before:bg-[linear-gradient(to_right,white,transparent_25%,transparent_75%,white),linear-gradient(to_bottom,white,transparent_25%,transparent_75%,white)]
                   before:opacity-30
                   before:-z-10"
-                   
                    />
-                  <CarouselNext className="bg-white/10 text-white hover:text-white
+                  <CarouselNext className="hidden lg:flex bg-white/10 text-white hover:text-white
                   hover:bg-[#ecf8e0]/30
                   scale-150
                   backdrop-blur-sm
@@ -346,6 +348,55 @@ export default function Home() {
                   before:opacity-30
                   before:-z-10" />
 
+                  <div className="flex lg:hidden justify-center items-center gap-8 mt-4 pb-2">
+                    <CarouselPrevious className="static translate-x-0 translate-y-0
+                      bg-white/10 text-white hover:text-white
+                      hover:bg-[#ecf8e0]/30
+                      backdrop-blur-sm
+                      border-1
+                      border-white/70
+                      backdrop-saturate-400
+                      shadow-[0_8px_32px_0_rgba(0,0,0,0.12)]
+                      hover:shadow-[0_8px_32px_0_rgba(0,0,0,0.18)]
+                      duration-300 
+                      ease-out
+                      hover:scale-110
+                      transition-all 
+                      cursor-pointer 
+                      rounded-full
+                      w-10 h-10
+                      before:absolute
+                      before:inset-0
+                      before:rounded-full
+                      before:p-[2px]
+                      before:bg-[linear-gradient(to_right,white,transparent_25%,transparent_75%,white),linear-gradient(to_bottom,white,transparent_25%,transparent_75%,white)]
+                      before:opacity-30
+                      before:-z-10" />
+                    <CarouselNext className="static translate-x-0 translate-y-0
+                      bg-white/10 text-white hover:text-white
+                      hover:bg-[#ecf8e0]/30
+                      backdrop-blur-sm
+                      border-1
+                      border-white/70
+                      backdrop-saturate-400
+                      shadow-[0_8px_32px_0_rgba(0,0,0,0.12)]
+                      hover:shadow-[0_8px_32px_0_rgba(0,0,0,0.18)]
+                      duration-300 
+                      ease-out
+                      hover:scale-110
+                      transition-all 
+                      cursor-pointer 
+                      rounded-full
+                      w-10 h-10
+                      before:absolute
+                      before:inset-0
+                      before:rounded-full
+                      before:p-[2px]
+                      before:bg-[linear-gradient(to_right,white,transparent_25%,transparent_75%,white),linear-gradient(to_bottom,white,transparent_25%,transparent_75%,white)]
+                      before:opacity-30
+                      before:-z-10" />
+                  </div>
+
                   
                 </Carousel>
 
@@ -353,9 +404,9 @@ export default function Home() {
                 
 
               
-              <div className="flex flex-row py-10 -translate-y-5">
+              <div className="flex flex-col lg:flex-row py-10 -translate-y-5">
 
-                 <div className="w-2/3">
+                 <div className="w-2/3 lg:place-self-start place-self-center">
                   <Image
                     className="object-fill w-full transition-all duration-300 hover:scale-107"
                     src={strawberryMilk}
@@ -367,9 +418,9 @@ export default function Home() {
                 </div>
                 
                 {/* dude i should prob componentify this or make it into an array but im too lazy */}
-                <div className="flex flex-col text-white gap-2 self-center w-full pr-15 ">
-                  <div className="text-white text-2xl font-[subheading-font] hover:text-3xl transition-all duration-300">THIS IS WHAT I'M MOST PROUD OF</div>
-                 <div className="text-base font-[subheading-font]  hover:text-lg hover:scale-105 transition-all duration-300  text-left justify-start
+                <div className="flex flex-col text-white gap-2 self-center w-full pl-20 pr-20 lg:pl-0 lg:pr-15 ">
+                  <div className="text-white text-center lg:text-start text-2xl font-[subheading-font] hover:text-3xl transition-all duration-300">THIS IS WHAT I'M MOST PROUD OF</div>
+                 <div className="text-sm lg:text-base font-[subheading-font]  hover:text-lg hover:scale-105 transition-all duration-300  text-left lg:justify-start
                  bg-white/10 
                  p-3
                  w-full
@@ -397,7 +448,7 @@ export default function Home() {
                  " onMouseEnter={() => setStrawberryMilk("/decor/strawberrymilk/1.png")}>
                     Returning Embedded Software Engineer Intern at NVIDIA
                   </div>
-                  <div className="text-base font-[subheading-font] hover:text-lg hover:scale-105 transition-all duration-300  text-left justify-start
+                  <div className="text-sm lg:text-base font-[subheading-font] hover:text-lg hover:scale-105 transition-all duration-300  text-left lg:justify-start
                  bg-white/10 
                  p-3
                  w-full
@@ -425,7 +476,7 @@ export default function Home() {
                  " onMouseEnter={() => setStrawberryMilk("/decor/strawberrymilk/2.png")}>
                     Current Software Engineer Intern at BNY
                   </div>
-                  <div className="text-base font-[subheading-font] hover:text-lg hover:scale-105 transition-all duration-300  text-left justify-start
+                  <div className="text-sm lg:text-base font-[subheading-font] hover:text-lg hover:scale-105 transition-all duration-300  text-left lg:justify-start
                  bg-white/10 
                  p-3
                  w-full
@@ -453,7 +504,7 @@ export default function Home() {
                  " onMouseEnter={() => setStrawberryMilk("/decor/strawberrymilk/3.png")}>
                    Hackathon Lead at Knight Hacks
                   </div>
-                  <div className="text-base font-[subheading-font]  hover:text-lg hover:scale-105 transition-all duration-300  text-left justify-start
+                  <div className="text-sm lg:text-base font-[subheading-font]  hover:text-lg hover:scale-105 transition-all duration-300  text-left lg:justify-start
                  bg-white/10 
                  p-3
                  w-full
@@ -481,7 +532,7 @@ export default function Home() {
                  " onMouseEnter={() => setStrawberryMilk("/decor/strawberrymilk/4.png")}>
                     Software Chair at IEEE
                   </div>
-                  <div className="text-base font-[subheading-font]  hover:text-lg hover:scale-105 transition-all duration-300  text-left justify-start
+                  <div className="text-sm lg:text-base font-[subheading-font]  hover:text-lg hover:scale-105 transition-all duration-300  text-left lg:justify-start
                  bg-white/10 
                  p-3
                  w-full
@@ -570,70 +621,100 @@ export default function Home() {
                   height={1000}
                />
                   </div>
-               <div className="-translate-y-20 text-white font-[display-font] tracking-wide text-5xl hover:text-5xl duration-300 transition-all text-center hover:text-6xl">
+               <div className="-translate-y-20 text-white font-[display-font] tracking-wide text-4xl hover:text-5xl lg:text-5xl duration-300 transition-all text-center lg:hover:text-6xl">
                     RECENT EVENTS
               </div>
 
-
-              <div className="flex flex-row h-130 pr-10 pl-10 pb-10 gap-5 w-full">
+              {/* ── Desktop layout (lg+): original side-by-side ── */}
+              <div className="hidden lg:flex flex-row h-130 pr-10 pl-10 pb-10 gap-5 w-full">
                 <div className="w-2/3 bg-white/20 border-1 border-white/40 rounded-3xl">
-                <div className="bg-[#ff687e] rounded-t-3xl h-1/2  border-white">
-                   <Image
-                    className="object-cover h-full rounded-t-3xl opacity-80"
-                    src={currentEvent?.photoUrl || "/matcha/lofi-girl.jpeg"}
-                    alt=""
-                    width={2000}
-                    height={2000}
-                  />
-
+                  <div className="bg-[#ff687e] rounded-t-3xl h-1/2 border-white">
+                    <Image
+                      className="object-cover h-full rounded-t-3xl opacity-80"
+                      src={currentEvent?.photoUrl || "/matcha/lofi-girl.jpeg"}
+                      alt=""
+                      width={2000}
+                      height={2000}
+                    />
                   </div>
-
-
                   <div className="p-2">
-                     <div className="font-[subheading-font] text-white text-2xl hover:text-3xl transition-all duration-300">{currentEvent?.headline}</div>
-                      <div className="font-[body-font] text-white/80 text-lg">{currentEvent?.date} in {currentEvent?.location}</div>
-                      <div className="font-[body-font] text-white text-base">{currentEvent?.description}</div>
-
+                    <div className="font-[subheading-font] text-white text-2xl hover:text-3xl transition-all duration-300">{currentEvent?.headline}</div>
+                    <div className="font-[body-font] text-white/80 text-lg">{currentEvent?.date} in {currentEvent?.location}</div>
+                    <div className="font-[body-font] text-white text-base">{currentEvent?.description}</div>
                   </div>
-                 
-
                 </div>
                 <div className="flex flex-col w-1/3 overflow-y-scroll overflow-x-hidden">
                   <div className="text-white font-[subheading-font] text-2xl hover:text-3xl transition-all duration-300">HIGHLIGHTS</div>
-                {Events?.map((item, index) => (
-                  <div className="
-                  
-                  " onClick={()=> handleEventSelect(item)}>
-                    <div className="p-2 flex flex-row gap-3 hover:scale-105 transition-all duration-300 cursor-pointer">
-                        
+                  {Events?.map((item, index) => (
+                    <div key={index} onClick={() => handleEventSelect(item)}>
+                      <div className="p-2 flex flex-row gap-3 hover:scale-105 transition-all duration-300 cursor-pointer">
                         <div className="bg-[#ff687e] rounded-lg w-1/4 border-white">
+                          <Image
+                            className="object-cover h-full w-full rounded-lg opacity-80"
+                            src={item.photoUrl}
+                            alt=""
+                            width={2000}
+                            height={2000}
+                          />
+                        </div>
+                        <div className="text-left flex flex-col w-3/4">
+                          <div className="font-[subheading-font] text-base text-white">{item.headline}</div>
+                          <div className="font-[body-font] text-white/80 text-sm">{item.location}</div>
+                          <div className="font-[body-font] text-white/80 text-sm">{item.date}</div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* ── Mobile / tablet layout (< lg): featured card stacked above horizontal scroll strip ── */}
+              <div className="flex lg:hidden flex-col px-4 pb-10 gap-4">
+
+                {/* Featured event card */}
+                <div className="w-full bg-white/20 border-1 border-white/40 rounded-3xl overflow-hidden">
+                  <div className="bg-[#ff687e] rounded-t-3xl h-48 w-full">
+                    <Image
+                      className="object-cover h-full w-full rounded-t-3xl opacity-80"
+                      src={currentEvent?.photoUrl || "/matcha/lofi-girl.jpeg"}
+                      alt=""
+                      width={2000}
+                      height={2000}
+                    />
+                  </div>
+                  <div className="p-3">
+                    <div className="font-[subheading-font] text-white text-xl">{currentEvent?.headline}</div>
+                    <div className="font-[body-font] text-white/80 text-sm">{currentEvent?.date} in {currentEvent?.location}</div>
+                    <div className="font-[body-font] text-white text-sm mt-1">{currentEvent?.description}</div>
+                  </div>
+                </div>
+
+                {/* Horizontal scrollable highlights strip */}
+                <div className="text-white font-[subheading-font] text-xl">HIGHLIGHTS</div>
+                <div className="flex flex-row gap-3 overflow-x-auto pb-2">
+                  {Events?.map((item, index) => (
+                    <div
+                      key={index}
+                      onClick={() => handleEventSelect(item)}
+                      className="flex-shrink-0 w-40 bg-white/20 border-1 border-white/40 rounded-2xl overflow-hidden cursor-pointer hover:scale-105 transition-all duration-300"
+                    >
+                      <div className="bg-[#ff687e] h-24 w-full">
                         <Image
-                          className="object-cover h-full w-full rounded-lg opacity-80"
+                          className="object-cover h-full w-full opacity-80"
                           src={item.photoUrl}
                           alt=""
-                          width={2000}
-                          height={2000}
+                          width={400}
+                          height={400}
                         />
-
-                        </div>
-                        
-                        <div className="text-left flex flex-col w-3/4">
-                           <div className="font-[subheading-font] text-base text-white">{item.headline}</div>
-                          <div className="font-[body-font] text-white/80 text-sm">{item.location}</div>
-                          <div className="font-[body-font] text-white/80 text-sm ">{item.date}</div>
-                        </div>
-                      
+                      </div>
+                      <div className="p-2">
+                        <div className="font-[subheading-font] text-white text-xs leading-snug line-clamp-2">{item.headline}</div>
+                        <div className="font-[body-font] text-white/70 text-xs mt-0.5">{item.date}</div>
+                        <div className="font-[body-font] text-white/70 text-xs">{item.location}</div>
+                      </div>
                     </div>
-
-                   
-                  </div>
-                  
-          
-              )
-
-                )}
+                  ))}
                 </div>
-                
 
               </div>
 
