@@ -132,7 +132,7 @@ export default function SkillsPage() {
         if (!skills) return {};
         return skills.reduce<Record<string, Skill[]>>((acc, skill) => {
             const cat = (skill.category ?? "other").trim().toLowerCase();
-            if (!acc[cat]) acc[cat] = [];
+            acc[cat] ??= [];
             acc[cat].push(skill);
             return acc;
         }, {});
@@ -184,7 +184,7 @@ export default function SkillsPage() {
                             <p className="text-white font-[body-font] text-sm sm:text-base md:text-lg
                                 hover:text-base sm:hover:text-lg md:hover:text-xl
                                 transition-all duration-300 mt-2 max-w-md drop-shadow">
-                                The tools, languages, and frameworks I've sharpened across internships, hackathons, and side projects.
+                                The tools, languages, and frameworks I&apos;ve sharpened across internships, hackathons, and side projects.
                             </p>
                         </div>
                         <Image

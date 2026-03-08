@@ -68,7 +68,7 @@ const Reel: React.FC = () => {
     useEffect(() => {
         try {
             const stored = sessionStorage.getItem("likedExperiences");
-            if (stored) setLikedIds(new Set(JSON.parse(stored)));
+            if (stored) setLikedIds(new Set(JSON.parse(stored) as string[]));
         } catch {}
     }, []);
 
@@ -96,7 +96,7 @@ const Reel: React.FC = () => {
 
     const togglePause = () => {
         if (!videoRef.current) return;
-        if (isPaused) { videoRef.current.play(); setIsPaused(false); }
+        if (isPaused) { void videoRef.current.play(); setIsPaused(false); }
         else { videoRef.current.pause(); setIsPaused(true); }
     };
 

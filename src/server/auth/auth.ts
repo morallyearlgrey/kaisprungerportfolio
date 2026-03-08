@@ -4,6 +4,13 @@ import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import { db } from "@/server/db/index";
 import { Accounts, Users, Sessions } from "@/server/db/schema";
 
+interface DiscordProfile {
+  id: string;
+  username: string;
+  email: string | null;
+  avatar: string | null;
+}
+
 export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: DrizzleAdapter(db, {
     usersTable: Users,
@@ -20,13 +27,17 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       authorization:
         "https://discord.com/api/oauth2/authorize?scope=identify+email",
 
-      profile(profile) {
+      profile(profile: DiscordProfile) {
+        const id: string = profile.id;
+        const name: string = profile.username;
+        const email: string | null = profile.email;
+        const avatar: string | null = profile.avatar;
         return {
-          id: profile.id,
-          name: profile.username,
-          email: profile.email,
-          image: profile.avatar
-            ? `https://cdn.discordapp.com/avatars/${profile.id}/${profile.avatar}.png`
+          id,
+          name,
+          email,
+          image: avatar
+            ? `https://cdn.discordapp.com/avatars/${id}/${avatar}.png`
             : null,
         };
       },

@@ -9,48 +9,40 @@ export const MusicPlayer = (() => {
     const [isPlaying, setIsPlaying] = useState<boolean>(false);
     const audioRef = useRef<HTMLAudioElement>(null);
 
-    useEffect(()=> {
+    useEffect(() => {
         if (audioRef.current && Songs?.[trackIndex]) {
             audioRef.current.src = Songs[trackIndex].url;
-            if(isPlaying) {
-                audioRef.current.play();
+            if (isPlaying) {
+                void audioRef.current.play();
             }
         }
-
-    }, [trackIndex, Songs]);
+    }, [trackIndex, Songs, isPlaying]);
 
     const toggle = () => {
-        if(audioRef.current) {
-            if(isPlaying) {
+        if (audioRef.current) {
+            if (isPlaying) {
                 setIsPlaying(false);
                 audioRef.current.pause();
-
             } else {
-                if(audioRef.current.src) {
+                if (audioRef.current.src) {
                     setIsPlaying(true);
-                    audioRef.current.play();
-
+                    void audioRef.current.play();
                 }
-               
             }
-
         }
-
     };
 
     const skip = () => {
-        if(Songs && audioRef.current) {
-            setTrackIndex((trackIndex+1)%Songs.length);
-            setIsPlaying(true); 
-            audioRef.current.play();
-
+        if (Songs && audioRef.current) {
+            setTrackIndex((trackIndex + 1) % Songs.length);
+            setIsPlaying(true);
+            void audioRef.current.play();
         }
-       
-    }
+    };
 
     const handleEnded = () => {
         skip();
-    }
+    };
 
     return (
         <div 
@@ -74,7 +66,6 @@ export const MusicPlayer = (() => {
         duration-300 
         ease-out
         transition-all 
-        rounded-full
         before:absolute
         before:inset-0
         before:rounded-full
@@ -82,7 +73,6 @@ export const MusicPlayer = (() => {
         before:bg-[linear-gradient(to_right,white,transparent_25%,transparent_75%,white),linear-gradient(to_bottom,white,transparent_25%,transparent_75%,white)]
         before:opacity-60
         before:-z-10
-
         ">
             <audio ref={audioRef} onEnded={handleEnded} />
             <div className="flex flex-row gap-3">
@@ -181,8 +171,5 @@ export const MusicPlayer = (() => {
             </div>
 
         </div>
-
-
-    )
-
+    );
 });
