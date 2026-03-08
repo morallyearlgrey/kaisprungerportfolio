@@ -133,7 +133,7 @@ export default function SkillsPage() {
         return skills.reduce<Record<string, Skill[]>>((acc, skill) => {
             const cat = (skill.category ?? "other").trim().toLowerCase();
             if (!acc[cat]) acc[cat] = [];
-            acc[cat]!.push(skill);
+            acc[cat].push(skill);
             return acc;
         }, {});
     }, [skills]);

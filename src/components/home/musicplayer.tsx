@@ -1,16 +1,16 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { RabbitIcon, Music, Pause, SkipForward } from "lucide-react";
+import { Music, Pause, SkipForward } from "lucide-react";
 import { trpc } from "@/trpc/client";
 
 export const MusicPlayer = (() => {
     const { data: Songs } = trpc.music.getAllSongs.useQuery();
     
     const [trackIndex, setTrackIndex] = useState<number>(0);
-    const [isPlaying, setIsPlaying] = useState<Boolean>(false);
+    const [isPlaying, setIsPlaying] = useState<boolean>(false);
     const audioRef = useRef<HTMLAudioElement>(null);
 
     useEffect(()=> {
-        if (audioRef.current && Songs && Songs[trackIndex]) {
+        if (audioRef.current && Songs?.[trackIndex]) {
             audioRef.current.src = Songs[trackIndex].url;
             if(isPlaying) {
                 audioRef.current.play();

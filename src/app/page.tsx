@@ -1,17 +1,15 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
 
 import { Navbar } from "../components/navbar";
 
-import { RabbitIcon, Music, Pause, SkipForward } from "lucide-react";
 
 import { useRouter } from "next/navigation";
 
-import {useState, useEffect, useRef} from "react";
+import {useState, useEffect} from "react";
 
 import { trpc } from "@/trpc/client";
 
@@ -19,15 +17,6 @@ import { MusicPlayer } from "@/components/home/musicplayer";
 
 import { WavyBackground } from "@/components/ui/wavy-background";
 
-import {
-  Card,
-  CardAction,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
 
 import {
   Carousel,

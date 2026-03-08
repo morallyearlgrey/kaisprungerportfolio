@@ -3,8 +3,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import Image from "next/image";
 import { XMarkIcon, Bars3Icon } from "@heroicons/react/24/solid";
-import { trpc } from "@/trpc/client";
-import { RabbitIcon, Linkedin, Github, Paperclip, } from 'lucide-react';
+import { Linkedin, Github, Paperclip, } from 'lucide-react';
 
 
 // import { AvatarMenu } from "@/components/avatarmenu";

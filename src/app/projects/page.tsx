@@ -124,7 +124,7 @@ export default function Projects() {
                         />
                     </div>
 
-                    {projectsWithPhotos[0] && projectsWithPhotos[0].photos[0] && (
+                    {projectsWithPhotos[0]?.photos[0] && (
                         <div className="mt-8 mx-auto max-w-xl grid grid-cols-1 sm:grid-cols-2 rounded-3xl overflow-hidden
                             backdrop-blur-sm bg-[#ff687e]/30 hover:bg-[#ff687e]/50
                             border border-white backdrop-saturate-250
