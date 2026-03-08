@@ -7,22 +7,6 @@ import { WavyBackground } from "@/components/ui/wavy-background";
 import { trpc } from "@/trpc/client";
 import { useMemo } from "react";
 
-import type { Metadata } from "next";
-
-const pageTitle = "Skills | Kai Sprunger";
-const pageDescription = "The programming languages, frameworks, and dev tools I know.";
-
-export const metadata: Metadata = {
-    title: pageTitle,
-    description: pageDescription,
-    openGraph: {
-        title: pageTitle,
-        description: pageDescription,
-        url: "https://kaisprunger.com/skills",
-        type: "website",
-    },
-};
-
 interface Skill {
     id: string;
     name: string;
