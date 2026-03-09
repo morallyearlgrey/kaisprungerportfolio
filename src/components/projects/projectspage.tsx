@@ -18,6 +18,8 @@ import React, { useState, useEffect, useMemo } from "react";
 
 import { WavyBackground } from "@/components/ui/wavy-background";
 
+const FEATURED_PROJECT_ID = "339037ff-4c69-4949-b1bf-e32cb499a592";
+
 interface Project {
     id: string;
     name: string;
@@ -60,6 +62,10 @@ export default function Projects() {
             .filter((item): item is ProjectWithPhotos => item !== null);
     }, [projects, projectPhotos]);
 
+    const featuredProject = useMemo(() => {
+        return projectsWithPhotos.find(p => p.id === FEATURED_PROJECT_ID) ?? null;
+    }, [projectsWithPhotos]);
+
     useEffect(() => {
         document.body.style.overflow = selectedProject ? "hidden" : "unset";
         return () => { document.body.style.overflow = "unset"; };
@@ -93,7 +99,7 @@ export default function Projects() {
                     <div className="relative rounded-3xl overflow-hidden bg-[#ff687e] border border-white">
                         <Image
                             className="w-full h-48 sm:h-64 md:h-80 object-cover opacity-80"
-                            src="/matcha/projectsMatcha.jpeg"
+                            src="/projects/header1.jpeg"
                             alt="projects header"
                             width={3000}
                             height={3000}
@@ -104,27 +110,12 @@ export default function Projects() {
                                 PROJECTS
                             </h1>
                             <p className="text-white font-[body-font] text-sm sm:text-base md:text-lg hover:text-base sm:hover:text-lg md:hover:text-xl transition-all duration-300 mt-2 max-w-md drop-shadow">
-                                Browse the projects I’ve created across hackathons, UCF courses, and my personal life. Each one represents a challenge solved, a skill learned, and an idea brought to life.
+                                Browse the projects I've created across hackathons, UCF courses, and my personal life. Each one represents a challenge solved, a skill learned, and an idea brought to life.
                             </p>
                         </div>
-
-                        {/* <Image
-                            className="absolute bottom-3 left-3 sm:bottom-5 sm:left-5 w-16 sm:w-24 md:w-28 hover:scale-110 transition-all duration-300"
-                            src="/decor/heartleft.png"
-                            alt=""
-                            width={150}
-                            height={150}
-                        />
-                        <Image
-                            className="absolute top-3 right-3 sm:top-5 sm:right-5 w-16 sm:w-24 md:w-28 hover:scale-110 transition-all duration-300"
-                            src="/decor/heartright.png"
-                            alt=""
-                            width={200}
-                            height={200}
-                        /> */}
                     </div>
 
-                    {projectsWithPhotos[0]?.photos[0] && (
+                    {featuredProject && (
                         <div className="mt-8 mx-auto max-w-xl grid grid-cols-1 sm:grid-cols-2 rounded-3xl overflow-hidden
                             backdrop-blur-sm bg-[#ff687e]/30 hover:bg-[#ff687e]/50
                             border border-white backdrop-saturate-250
@@ -135,14 +126,14 @@ export default function Projects() {
                             <div className="relative">
                                 <Image
                                     className="object-cover w-full h-48 sm:h-full"
-                                    src={projectsWithPhotos[0].photos[0].photoUrl}
-                                    alt={projectsWithPhotos[0].name}
+                                    src={featuredProject.photos[0]!.photoUrl}
+                                    alt={featuredProject.name}
                                     width={3000}
                                     height={3000}
                                 />
                                 <div className="absolute bottom-4 right-4 z-10">
                                     <Link
-                                        href={projectsWithPhotos[0].projectLink}
+                                        href={featuredProject.projectLink}
                                         className="flex items-center gap-1 text-white px-3 py-2
                                         bg-[#a0d963] hover:bg-[#ecf8e0]/30 cursor-pointer
                                         backdrop-blur-sm border border-white backdrop-saturate-250
@@ -158,13 +149,13 @@ export default function Projects() {
                             </div>
                             <div className="p-5 flex flex-col justify-center gap-1">
                                 <span className="text-white font-[subheading-font] text-base sm:text-lg hover:text-lg sm:hover:text-xl transition-all duration-300">
-                                    Featured: {projectsWithPhotos[0].name}
+                                    Featured: {featuredProject.name}
                                 </span>
                                 <span className="text-white/80 font-[body-font] text-sm sm:text-base hover:text-base sm:hover:text-lg transition-all duration-300">
-                                    {projectsWithPhotos[0].location}
+                                    {featuredProject.location}
                                 </span>
                                 <span className="text-white font-[body-font] text-xs sm:text-sm hover:text-sm sm:hover:text-base transition-all duration-300 mt-1">
-                                    {projectsWithPhotos[0].shortDescription}
+                                    {featuredProject.shortDescription}
                                 </span>
                             </div>
                         </div>
@@ -182,7 +173,7 @@ export default function Projects() {
                         <div className="relative bg-[#ff687e] w-full">
                             <Image
                                 className="object-cover w-full h-40 sm:h-56 opacity-80"
-                                src="/decor/recentevents.jpg"
+                                src="/projects/header2.jpeg"
                                 alt=""
                                 width={1000}
                                 height={1000}

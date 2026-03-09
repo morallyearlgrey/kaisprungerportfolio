@@ -18,17 +18,17 @@ interface Skill {
 const CATEGORY_CONFIG: Record<string, { label: string; image: string; color: string }> = {
     languages: {
         label: "Programming & HDL Languages",
-        image: "/experiences/NVIDIA.jpeg",
+        image: "/skills/languages.jpeg",
         color: "#ff687e",
     },
     frameworks: {
         label: "Libraries & Frameworks",
-        image: "/experiences/NVIDIA.jpeg",
+        image: "/skills/frameworks.jpeg",
         color: "#e3816f",
     },
     tools: {
         label: "Dev Tools",
-        image: "/experiences/NVIDIA.jpeg",
+        image: "/skills/tools.jpg",
         color: "#c97bb0",
     },
 };
@@ -78,7 +78,7 @@ const CategorySection: React.FC<{ category: string; skills: Skill[] }> = ({ cate
     const normalizedKey = category.trim().toLowerCase();
     const config = CATEGORY_CONFIG[normalizedKey] ?? CATEGORY_CONFIG[category] ?? {
         label: category.charAt(0).toUpperCase() + category.slice(1),
-        image: "/decor/recentevents.jpg",
+        image: "/skills/header.jpg",
         color: "#ff687e",
     };
 
@@ -169,7 +169,7 @@ export default function SkillsPage() {
                     <div className="relative rounded-3xl overflow-hidden bg-[#ff687e] border border-white">
                         <Image
                             className="w-full h-48 sm:h-64 md:h-80 object-cover opacity-80"
-                            src="/matcha/projectsMatcha.jpeg"
+                            src="/skills/header.jpg"
                             alt="skills header"
                             width={3000}
                             height={3000}

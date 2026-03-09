@@ -44,25 +44,25 @@ const aboutScript: {id: number; title: string; paragraph: string; highlight: str
   { id: 1, title: "INTRODUCTION", paragraph: 
    "Hello, my name is Kai Sprunger and I am a Software Engineer studying Computer Science at the University of Central Florida. No matter what challenge I face, I always embrace it with optimism. Throughout being the IEEE @ UCF Software Chair, the Knight Hacks Hackathon Lead, a NVIDIA Software Engineer, and a BNY Software Engineer, I've completed my work thoroughly with a smile. Just as my community has helped me in my lowest times, I hope that I can uplift others too and inspire them to keep on pursuing their goals.",
    highlight: ["Kai Sprunger", "Software Engineer", "University of Central Florida", "IEEE @ UCF Software Chair", "Knight Hacks Hackathon Lead", "NVIDIA", "BNY", "Computer Science"],
-   image: "/decor/introduction.JPG",
+   image: "/home/introduction.JPG",
   },
 
   { id: 2, title: "COMMUNITY", paragraph: 
-    "This portfolio is not here to exclusively display who I am. Several wonderful people at the University of Central Florida (UCF) have played significant roles in passing down technical knowledge, professional advice, and most importantly, a strong work ethic. Because I would not be who I am today without them, I hope that I can give back by being a heavily active student in UCF's EECS community. As the Software Chair of IEEE @ UCF, I am leading a team of incredible SWEs in developing the organization's website/member dashboard, Discord bot, and resume website. Additionally, within Knight Hacks, I work as a Hackathon Organizer, where I had the amazing opportunity to co-lead volunteers and co-organize for Knight Hacks VIII. I am so grateful for every core memory and skill boost I've gained through IEEE @ UCF and Knight Hacks. They are my second family and I owe everything to them.", 
+    "This portfolio is not here to exclusively display who I am. Several wonderful people at the University of Central Florida (UCF) have played significant roles in passing down technical knowledge, professional advice, and most importantly, a strong work ethic. Because I would not be who I am today without them, I hope that I can give back by being a heavily active student in UCF's EECS community. As the Software Chair of IEEE @ UCF, I am leading a team of incredible SWEs in developing the organization's website/member dashboard, Discord bot, and resume website. Additionally, within Knight Hacks, I worked as a Hackathon Organizer, where I had the amazing opportunity to co-lead volunteers and co-organize for Knight Hacks VIII. I am so grateful for every core memory and skill boost I've gained through IEEE @ UCF and Knight Hacks. They are my second family and I owe everything to them.", 
    highlight: ["This portfolio is not here to exclusively display who I am.", "strong work ethic", "Software Chair of IEEE @ UCF", "Hackathon Organizer"],
-   image: "/decor/community.png",
+   image: "/home/community.png",
   },
 
   { id: 3, title: "CAREER", paragraph: 
     "For me, the most fulfilling part of working as a Software Engineer is the moment when you finally feel proud of what you've developed. This feeling, built upon hours of parsing through Stack Overflow and programming on 400 mg of caffeine, is irreplaceable. I've experienced this sense of accomplishment through the projects I've completed within NVIDIA, BNY, and software development hackathons. As a former and returning Software Engineer Intern at NVIDIA, I increased the coverage of a RISC-V OS microkernel library from 77.7% to 97.1% and uncovered bugs, improving the reliability of the system. Within hackathons, I've worked on projects ranging from a tariff rate API/chrome extension, a networking application with a vector-based recommendation system, a hackathon organization website, and more. No matter the project, I'm driven by the satisfaction of solving difficult problems and the pride that comes with seeing your work come to life.",
    highlight: ["For me, the most fulfilling part of working as a Software Engineer is the moment when you finally feel proud of what you've developed.", "Software Engineer Intern at NVIDIA", "hackathons"],
-   image: "/decor/career.jpeg",
+   image: "/home/career.jpeg",
   },
 
   { id: 4, title: "END NOTE", paragraph: 
     "For every low moment, there is still a high ahead, and even on the hardest days, showing up with a positive attitude makes all the difference. Pursuing Computer Science has taught me this valuable lesson, showing me how to stay composed under pressure and to continue persevering even if nothing has gone to plan. Every obstacle is an opportunity to grow.",
    highlight: ["Every obstacle is an opportunity to grow."],
-   image: "/decor/endnote.png",
+   image: "/home/endnote.png",
 
   },
 
@@ -181,7 +181,7 @@ export default function Home() {
                   before:-z-10
                   lg:self-start
                   self-center
-                  " onClick={() => router.push("/about")}
+                  " onClick={() => router.push("/experiences")}
               >
                   <span>LEARN ABOUT WHO I AM...</span>
                  
@@ -194,19 +194,19 @@ export default function Home() {
                   
               <div className="bg-[#ff687e] border-1 border-white rounded-3xl h-8/12 
               ">
-                <video autoPlay loop muted playsInline controls={false} className="z-90 border-1 border-white opacity-80 object-cover rounded-3xl  h-full w-full" src="/matcha/matcha.mp4">
+                <video autoPlay loop muted playsInline controls={false} className="z-90 border-1 border-white opacity-80 object-cover rounded-3xl  h-full w-full" src="/home/matcha.mp4">
                 </video>
                 <div className="flex flex-row justify-between translate-x-15">
                    <Image
                     className="object-fill place-self-end  -translate-y-100 z-100 -translate-x-30 hover:scale-110 transition-all duration-300"
-                    src="/decor/heartleft.png"
+                    src="/iconography/heartleft.png"
                     alt="pouring coffee"
                     width={120}
                     height={120}
                   />
                   <Image
                     className="object-fill place-self-end -translate-y-50 z-100  hover:scale-110 transition-all duration-300"
-                    src="/decor/heartright.png"
+                    src="/iconography/heartright.png"
                     alt="pouring coffee"
                     width={100}
                     height={100}
@@ -244,7 +244,7 @@ export default function Home() {
                 <div className="bg-[#ff687e]  rounded-t-4xl">
               <Image
                   className="object-cover rounded-t-4xl h-70 opacity-80 w-full"
-                  src="/decor/aboutme.jpg"
+                  src="/home/aboutme.jpg"
                   alt=""
                   width={1000}
                   height={1000}
@@ -401,7 +401,7 @@ export default function Home() {
                     alt="pouring coffee"
                     width={2000}
                     height={2000}
-                    onMouseEnter={() => setStrawberryMilk("/decor/strawberrymilk/3.png")}
+                    onMouseEnter={() => setStrawberryMilk("/iconography/strawberrymilk/3.png")}
                   />
                 </div>
                 
@@ -559,14 +559,14 @@ export default function Home() {
               <div className=" flex flex-row justify-between bottom-0 left-0 -mb-[180px] ">
                     <Image
                       className="object-fill place-self-end -translate-y-120 z-100 -translate-x-35 hover:scale-110 transition-all duration-300"
-                      src="/decor/heartleft.png"
+                      src="/iconography/heartleft.png"
                       alt="pouring coffee"
                       width={200}
                       height={200}
                     />
                     <Image
                       className="object-fill place-self-end -translate-y-60 z-100 translate-x-25 hover:scale-110 transition-all duration-300"
-                      src="/decor/heartright.png"
+                      src="/iconography/heartright.png"
                       alt="pouring coffee"
                       width={150}
                       height={150}
@@ -602,7 +602,7 @@ export default function Home() {
                <div className="bg-[#ff687e]  rounded-t-4xl">
               <Image
                   className="object-cover rounded-t-4xl h-70  opacity-80 w-full"
-                  src="/decor/recentevents.jpg"
+                  src="/home/recentevents.jpg"
                   alt=""
                   width={1000}
                   height={1000}
@@ -617,7 +617,7 @@ export default function Home() {
                   <div className="bg-[#ff687e] rounded-t-3xl h-1/2 border-white">
                     <Image
                       className="object-cover h-full rounded-t-3xl opacity-80"
-                      src={currentEvent?.photoUrl ?? "/matcha/lofi-girl.jpeg"}
+                      src={currentEvent?.photoUrl ?? "/iconography/kaisprungericon.png"}
                       alt=""
                       width={2000}
                       height={2000}
@@ -660,7 +660,7 @@ export default function Home() {
                   <div className="bg-[#ff687e] rounded-t-3xl h-48 w-full">
                     <Image
                       className="object-cover h-full w-full rounded-t-3xl opacity-80"
-                      src={currentEvent?.photoUrl ?? "/matcha/lofi-girl.jpeg"}
+                      src={currentEvent?.photoUrl ?? "/iconography/kaisprungericon.png"}
                       alt=""
                       width={2000}
                       height={2000}

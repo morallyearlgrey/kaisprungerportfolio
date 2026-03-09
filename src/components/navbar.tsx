@@ -31,7 +31,6 @@ const Navbar: React.FC = () => {
     <>
       <div className="relative flex items-center justify-between h-30 w-full">
         <div className="flex w-full m-6">
-          {/* Logo */}
           <div className="flex justify-start items-center w-1/3 hover:scale-110 duration-300 transition-all">
             <Link
               href="/"
@@ -48,7 +47,6 @@ const Navbar: React.FC = () => {
             </Link>
           </div>
 
-          {/* Desktop nav */}
           <div className="lg:flex hidden items-center justify-center gap-5 w-3/5 rounded-full
             p-5 z-100 my-5
             bg-white/10 hover:bg-[#ecf8e0]/30
@@ -69,7 +67,6 @@ const Navbar: React.FC = () => {
             ))}
           </div>
 
-          {/* Desktop social icons */}
           <div className="cursor-pointer items-center w-1/3 justify-end gap-x-3 flex-row lg:flex hidden">
             <Link href="https://www.linkedin.com/in/kaisprunger/">
               <Linkedin className="scale-110 text-white hover:scale-140 duration-300 transition-all cursor-pointer" />
@@ -83,7 +80,6 @@ const Navbar: React.FC = () => {
           </div>
         </div>
 
-        {/* Mobile hamburger */}
         <button
           onClick={toggleMenu}
           className={`lg:hidden mr-5 z-100 p-2 hover:scale-110 ${glassButton}`}
@@ -104,7 +100,6 @@ const Navbar: React.FC = () => {
 const MobileMenu: React.FC<{ toggleMenu: () => void }> = ({ toggleMenu }) => {
   return (
     <div className="fixed inset-0 z-95 flex flex-col">
-      {/* Backdrop */}
       <div
         className="absolute inset-0 bg-black/30 backdrop-blur-md"
         onClick={toggleMenu}
@@ -112,14 +107,12 @@ const MobileMenu: React.FC<{ toggleMenu: () => void }> = ({ toggleMenu }) => {
 
       <div className="relative z-50 mt-24 mx-4 flex flex-col gap-3 animate-in slide-in-from-top-4 duration-300">
 
-        {/* Nav card */}
         <div className="
           rounded-3xl overflow-hidden
           bg-white/10 backdrop-blur-xl backdrop-saturate-400
           border border-white/70
           shadow-[0_16px_48px_0_rgba(0,0,0,0.25)]
         ">
-          {/* Header */}
           <div className="flex items-center gap-4 px-6 pt-6 pb-4 border-b border-white/20">
             <Image
               className="object-fill rounded-full"
@@ -131,16 +124,15 @@ const MobileMenu: React.FC<{ toggleMenu: () => void }> = ({ toggleMenu }) => {
             <span className="text-white font-[body-font] text-lg tracking-wide">KAI SPRUNGER</span>
           </div>
 
-          {/* Links */}
           <div className="flex flex-col p-3 gap-1">
             <Link
               href="/"
               onClick={toggleMenu}
               className={`px-4 py-3.5 text-white font-[subheading-font] text-base tracking-wide hover:scale-[1.02] ${glassButton}`}
             >
-              <div className="w-9 h-9 rounded-xl bg-white/20 border border-white/40 flex items-center justify-center flex-shrink-0">
+              {/* <div className="w-9 h-9 rounded-xl bg-white/20 border border-white/40 flex items-center justify-center flex-shrink-0">
                 <Image src="/iconography/navbarhome.png" alt="" width={20} height={20} className="object-contain" />
-              </div>
+              </div> */}
               HOME
             </Link>
 
@@ -151,16 +143,15 @@ const MobileMenu: React.FC<{ toggleMenu: () => void }> = ({ toggleMenu }) => {
                 onClick={toggleMenu}
                 className={`px-4 py-3.5 text-white font-[subheading-font] text-base tracking-wide hover:scale-[1.02] ${glassButton}`}
               >
-                <div className="w-9 h-9 rounded-xl bg-white/20 border border-white/40 flex items-center justify-center flex-shrink-0">
+                {/* <div className="w-9 h-9 rounded-xl bg-white/20 border border-white/40 flex items-center justify-center flex-shrink-0">
                   <Image src={route.image} alt="" width={20} height={20} className="object-contain" />
-                </div>
+                </div> */}
                 {route.title.toUpperCase()}
               </Link>
             ))}
           </div>
         </div>
 
-        {/* Social links card */}
         <div className="
           rounded-3xl
           bg-white/10 backdrop-blur-xl backdrop-saturate-400
