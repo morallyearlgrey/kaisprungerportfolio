@@ -18,7 +18,8 @@ import React, { useState, useEffect, useMemo } from "react";
 
 import { WavyBackground } from "@/components/ui/wavy-background";
 
-const FEATURED_PROJECT_ID = "339037ff-4c69-4949-b1bf-e32cb499a592";
+// ✏️ Set this to the UUID of the project you want featured
+const FEATURED_PROJECT_ID = "your-project-uuid-here";
 
 interface Project {
     id: string;
@@ -110,7 +111,7 @@ export default function Projects() {
                                 PROJECTS
                             </h1>
                             <p className="text-white font-[body-font] text-sm sm:text-base md:text-lg hover:text-base sm:hover:text-lg md:hover:text-xl transition-all duration-300 mt-2 max-w-md drop-shadow">
-                                Browse the projects I've created across hackathons, UCF courses, and my personal life. Each one represents a challenge solved, a skill learned, and an idea brought to life.
+                                Browse the projects I&apos;ve created across hackathons, UCF courses, and my personal life. Each one represents a challenge solved, a skill learned, and an idea brought to life.
                             </p>
                         </div>
                     </div>
