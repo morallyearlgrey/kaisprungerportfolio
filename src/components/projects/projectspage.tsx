@@ -18,8 +18,7 @@ import React, { useState, useEffect, useMemo } from "react";
 
 import { WavyBackground } from "@/components/ui/wavy-background";
 
-// ✏️ Set this to the UUID of the project you want featured
-const FEATURED_PROJECT_ID = "your-project-uuid-here";
+const FEATURED_PROJECT_ID = "339037ff-4c69-4949-b1bf-e32cb499a592";
 
 interface Project {
     id: string;

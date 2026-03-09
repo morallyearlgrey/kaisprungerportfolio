@@ -110,7 +110,7 @@ export default function Home() {
     setCurrentEvent(event);
   }
 
-  const [strawberryMilk, setStrawberryMilk] = useState<string>("/decor/strawberrymilk/3.png");
+  const [strawberryMilk, setStrawberryMilk] = useState<string>("/iconography/strawberrymilk/3.png");
   const [highlight, setHighlight] = useState<boolean>(false);
 
 
