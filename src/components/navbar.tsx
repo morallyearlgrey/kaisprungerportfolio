@@ -38,7 +38,7 @@ const Navbar: React.FC = () => {
             >
               <Image
                 className="object-fill w-[100] h-auto"
-                src="/decor/kaisprungericon.png"
+                src="/iconography/kaisprungericon.png"
                 alt="Kai Sprunger icon"
                 width={2000}
                 height={2000}
@@ -116,7 +116,7 @@ const MobileMenu: React.FC<{ toggleMenu: () => void }> = ({ toggleMenu }) => {
           <div className="flex items-center gap-4 px-6 pt-6 pb-4 border-b border-white/20">
             <Image
               className="object-fill rounded-full"
-              src="/decor/kaisprungericon.png"
+              src="/iconography/kaisprungericon.png"
               alt="Kai Sprunger"
               width={44}
               height={44}
