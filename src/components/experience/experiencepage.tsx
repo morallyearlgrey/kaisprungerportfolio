@@ -31,7 +31,7 @@ export default function Experiences() {
                     <div className="relative rounded-3xl overflow-hidden bg-[#ff687e] border border-white">
                         <Image
                             className="w-full h-48 sm:h-64 md:h-80 object-cover opacity-80"
-                            src="/experiences/photos/header.jpeg"
+                            src="/experiences/photos/header1.jpeg"
                             alt="experiences header"
                             width={3000}
                             height={3000}
