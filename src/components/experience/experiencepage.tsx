@@ -46,7 +46,7 @@ export default function Experiences() {
                             </p>
                         </div>
 
-                        <Image
+                        {/* <Image
                             className="absolute bottom-3 left-3 sm:bottom-5 sm:left-5 w-16 sm:w-24 md:w-28 hover:scale-110 transition-all duration-300"
                             src="/decor/heartleft.png"
                             alt="heart left"
@@ -59,7 +59,7 @@ export default function Experiences() {
                             alt="heart right"
                             width={200}
                             height={200}
-                        />
+                        /> */}
                     </div>
                 </div>
 
@@ -71,7 +71,7 @@ export default function Experiences() {
                     </div>
                 </div>
 
-                <div className="pb-24">
+                <div className="pb-24 self-center justify-center">
                     <Footer />
                 </div>
             </div>

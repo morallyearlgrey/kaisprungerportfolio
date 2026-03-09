@@ -108,7 +108,7 @@ export default function Projects() {
                             </p>
                         </div>
 
-                        <Image
+                        {/* <Image
                             className="absolute bottom-3 left-3 sm:bottom-5 sm:left-5 w-16 sm:w-24 md:w-28 hover:scale-110 transition-all duration-300"
                             src="/decor/heartleft.png"
                             alt=""
@@ -121,7 +121,7 @@ export default function Projects() {
                             alt=""
                             width={200}
                             height={200}
-                        />
+                        /> */}
                     </div>
 
                     {projectsWithPhotos[0]?.photos[0] && (
@@ -248,7 +248,7 @@ export default function Projects() {
                     </div>
                 </div>
 
-                <div className="w-full max-w-5xl mx-auto px-4 sm:px-8 md:px-12 pb-10">
+                <div className="w-full max-w-5xl mx-auto px-4 sm:px-8 md:px-12 pb-10 self-center justify-center">
                     <Footer />
                 </div>
             </div>

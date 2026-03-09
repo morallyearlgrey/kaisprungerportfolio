@@ -17,7 +17,7 @@ const Footer: React.FC = () => {
     return (
         <div className="
           items-center 
-        place-self-center justify-center gap-1 w-3/5 rounded-4xl 
+        place-self-center justify-center gap-1 w-full lg:w-3/5 rounded-4xl 
         p-5 
         rounded-full 
         z-100

@@ -153,7 +153,7 @@ export default function Home() {
                 </div>
 
                 <Button 
-                className="relative z-100 w-fit p-10 font-[subheading-font] 
+                className="relative z-90 w-fit p-10 font-[subheading-font] 
                   bg-white/10 
                   hover:bg-[#ecf8e0]/30
                   backdrop-blur-sm

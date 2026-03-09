@@ -187,7 +187,7 @@ export default function SkillsPage() {
                                 Explore my skills in languages, frameworks, and technologies that I have developed across the span of my career.
                             </p>
                         </div>
-                        <Image
+                        {/* <Image
                             className="absolute bottom-3 left-3 sm:bottom-5 sm:left-5 w-16 sm:w-24 md:w-28 hover:scale-110 transition-all duration-300"
                             src="/decor/heartleft.png"
                             alt=""
@@ -200,7 +200,7 @@ export default function SkillsPage() {
                             alt=""
                             width={200}
                             height={200}
-                        />
+                        /> */}
                     </div>
                 </div>
 
@@ -214,7 +214,7 @@ export default function SkillsPage() {
                     ))}
                 </div>
 
-                <div className="w-full max-w-5xl mx-auto px-4 sm:px-8 md:px-12 pb-10">
+                <div className="w-full max-w-5xl mx-auto px-4 sm:px-8 md:px-12 pb-10 self-center justify-center">
                     <Footer />
                 </div>
             </div>
