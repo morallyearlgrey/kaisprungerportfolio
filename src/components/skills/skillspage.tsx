@@ -64,7 +64,7 @@ const SkillCube: React.FC<{ skill: Skill }> = ({ skill }) => {
                 </div>
 
                 <div className="flex items-center justify-center px-1 bg-white/5" style={{ flex: "1 1 0%" }}>
-                    <span className="text-white font-[subheading-font] text-[10px] sm:text-xs text-center leading-tight line-clamp-2 drop-shadow">
+                    <span className="text-white font-[subheading-font] text-[10px] sm:text-xs text-center leading-tight line-clamp-2 ">
                         {skill.name}
                     </span>
                 </div>
@@ -102,7 +102,7 @@ const CategorySection: React.FC<{ category: string; skills: Skill[] }> = ({ cate
                     <span className="text-white font-[display-font] tracking-wide
                         text-2xl sm:text-3xl md:text-4xl
                         hover:text-3xl sm:hover:text-4xl md:hover:text-5xl
-                        transition-all duration-300 drop-shadow-lg">
+                        transition-all duration-300 ">
                         {config.label.toUpperCase()}
                     </span>
                 </div>
@@ -178,12 +178,12 @@ export default function SkillsPage() {
                             <h1 className="text-[#ffffff] font-[display-font]
                                 text-4xl sm:text-5xl md:text-6xl
                                 hover:text-5xl sm:hover:text-6xl md:hover:text-7xl
-                                transition-all duration-300 drop-shadow-lg">
+                                transition-all duration-300 ">
                                 SKILLS
                             </h1>
                             <p className="text-white font-[body-font] text-sm sm:text-base md:text-lg
                                 hover:text-base sm:hover:text-lg md:hover:text-xl
-                                transition-all duration-300 mt-2 max-w-md drop-shadow">
+                                transition-all duration-300 mt-2 max-w-md">
                                 Explore my skills in languages, frameworks, and technologies that I have developed across the span of my career.
                             </p>
                         </div>

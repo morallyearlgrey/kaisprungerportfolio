@@ -432,7 +432,7 @@ export default function Home() {
                  before:opacity-30
                  before:-z-10
                  relative
-                 " onMouseEnter={() => setStrawberryMilk("/decor/strawberrymilk/1.png")}>
+                 " onMouseEnter={() => setStrawberryMilk("/iconography/strawberrymilk/1.png")}>
                     Returning Embedded Software Engineer Intern at NVIDIA
                   </div>
                   <div className="text-sm lg:text-base font-[subheading-font] hover:text-lg hover:scale-105 transition-all duration-300  text-left lg:justify-start
@@ -460,7 +460,7 @@ export default function Home() {
                  before:opacity-30
                  before:-z-10
                  relative
-                 " onMouseEnter={() => setStrawberryMilk("/decor/strawberrymilk/2.png")}>
+                 " onMouseEnter={() => setStrawberryMilk("/iconography/strawberrymilk/2.png")}>
                     Current Software Engineer Intern at BNY
                   </div>
                   <div className="text-sm lg:text-base font-[subheading-font] hover:text-lg hover:scale-105 transition-all duration-300  text-left lg:justify-start
@@ -488,7 +488,7 @@ export default function Home() {
                  before:opacity-30
                  before:-z-10
                  relative
-                 " onMouseEnter={() => setStrawberryMilk("/decor/strawberrymilk/3.png")}>
+                 " onMouseEnter={() => setStrawberryMilk("/iconography/strawberrymilk/3.png")}>
                    Hackathon Lead at Knight Hacks
                   </div>
                   <div className="text-sm lg:text-base font-[subheading-font]  hover:text-lg hover:scale-105 transition-all duration-300  text-left lg:justify-start
@@ -516,7 +516,7 @@ export default function Home() {
                  before:opacity-30
                  before:-z-10
                  relative
-                 " onMouseEnter={() => setStrawberryMilk("/decor/strawberrymilk/4.png")}>
+                 " onMouseEnter={() => setStrawberryMilk("/iconography/strawberrymilk/4.png")}>
                     Software Chair at IEEE
                   </div>
                   <div className="text-sm lg:text-base font-[subheading-font]  hover:text-lg hover:scale-105 transition-all duration-300  text-left lg:justify-start
@@ -544,7 +544,7 @@ export default function Home() {
                  before:opacity-30
                  before:-z-10
                  relative
-                 " onMouseEnter={() => setStrawberryMilk("/decor/strawberrymilk/5.png")}>
+                 " onMouseEnter={() => setStrawberryMilk("/iconography/strawberrymilk/5.png")}>
                     7x Hackathon Winner
                 </div>
                

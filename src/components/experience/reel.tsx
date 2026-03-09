@@ -177,7 +177,7 @@ const Reel: React.FC = () => {
             <div className="bg-[#ff687e] rounded-t-4xl">
                 <Image
                     className="object-cover rounded-t-4xl h-70 opacity-80 w-full"
-                    src="/decor/career.jpeg"
+                    src="/experiences/photos/header.jpeg"
                     alt=""
                     width={1000}
                     height={1000}
